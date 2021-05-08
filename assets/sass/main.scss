@@ -302,7 +302,7 @@ $size-header-pad: 4em;
         }
 
         @include breakpoint('<=xsmall') {
-            max-width: calc100% - #{_size(element-margin) * 1.5});
+            max-width: calc(100% - #{_size(element-margin) * 1.5});
         }
     }
 
@@ -1073,7 +1073,7 @@ $size-header-pad: 4em;
         @include vendor('align-items', 'flex-end');
         @include vendor('justify-content', 'space-between');
         background-color:       _palette(accent2, bg);
-        background-attachment:  fixed,                             fixed;
+        //background-attachment:  scroll,                             scroll;
         background-image:       url('images/overlay.png'),          url('../../images/bg.jpg');
         background-position:    top left,                           top left;
         background-repeat:      repeat,                             no-repeat;
@@ -1082,7 +1082,7 @@ $size-header-pad: 4em;
         height: 100%;
         left: 0;
         padding: ($size-header-pad * 2) $size-header-pad;
-        position: absolute;
+        position: fixed;
         text-align: right;
         top: 0;
         width: $size-header-width;
@@ -1337,7 +1337,7 @@ $size-header-pad: 4em;
         }
 
         #header {
-            background-attachment:  fixed;
+            background-attachment:  scroll;
             background-size:        auto, cover;
         }
 
@@ -1443,12 +1443,12 @@ $size-header-pad: 4em;
         /* Header */
 
             #header {
-                background-attachment:  fixed;
+                background-attachment:  scroll;
                 background-position:    top left,   center center;
                 background-size:        auto,       cover;
                 left: auto;
                 padding: ($size-header-pad * 1.5) $size-header-pad;
-                position: relative;
+                position: fixed;
                 text-align: center;
                 top: auto;
                 width: 100%;
@@ -1466,7 +1466,7 @@ $size-header-pad: 4em;
         /* Footer */
 
             #footer {
-                background-attachment:  fixed;
+                //background-attachment:  scroll;
                 background-color:       _palette(accent2, bg);
                 background-image:       url('images/overlay.png'),      url('../../images/bg.jpg');
                 background-position:    top left,                       bottom center;
@@ -1475,7 +1475,7 @@ $size-header-pad: 4em;
                 bottom: auto;
                 left: auto;
                 padding: $size-header-pad $size-header-pad ($size-header-pad * 1.5) $size-header-pad;
-                position: relative;
+                position: fixed;
                 text-align: center;
                 width: 100%;
 
