@@ -1077,15 +1077,15 @@ $size-header-pad: 4em;
 		background-image:		url('images/overlay.png'),			url('../../images/bg.jpg');
 		background-position:	top left,							top left;
 		background-repeat:		repeat,								no-repeat;
-		background-size:		auto,								200%;
+		background-size:		auto,								150%;
 		color: _palette(accent2, fg);
-		height: 200%;
 		left: 0;
 		padding: ($size-header-pad * 2) $size-header-pad;
-		position: relative;
+		position: fixed;
 		text-align: right;
 		top: 0;
 		width: $size-header-width;
+		height: $size-header-height;
 
 		> * {
 			@include vendor('flex-shrink', '0');
