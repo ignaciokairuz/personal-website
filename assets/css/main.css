@@ -2040,8 +2040,8 @@ input, select, textarea {
 	.image {
 		border-radius: 0.35em;
 		border: 0;
-		display: block;
-		position: center;
+		display: inline;
+		position: relative;
 	}
 
 		.image:before {
