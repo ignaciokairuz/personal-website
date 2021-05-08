@@ -216,7 +216,7 @@ input, select, textarea {
 	}
 
 	pre {
-		-webkit-overflow-scrolling: touch;
+		/*-webkit-overflow-scrolling: touch;*/
 		font-family: "Courier New", monospace;
 		font-size: 0.9em;
 		margin: 0 0 2em 0;
@@ -2364,7 +2364,7 @@ input, select, textarea {
 /* Table */
 
 	.table-wrapper {
-		-webkit-overflow-scrolling: touch;
+		/*-webkit-overflow-scrolling: touch;*/
 		overflow-x: auto;
 	}
 
@@ -2968,7 +2968,7 @@ input, select, textarea {
 	}
 
 	body.is-touch #header {
-		background-attachment: scroll;
+		/*background-attachment: scroll;*/
 		background-size: auto, cover;
 	}
 
@@ -3053,7 +3053,7 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				background-attachment: scroll;
+				/*background-attachment: scroll;*/
 				background-position: top left, center center;
 				background-size: auto,		cover;
 				left: auto;
