@@ -2040,7 +2040,7 @@ input, select, textarea {
 	.image {
 		border-radius: 0.35em;
 		border: 0;
-		display: inline;
+		display: inline-block;
 		position: relative;
 	}
 
@@ -2062,7 +2062,7 @@ input, select, textarea {
 		}
 
 		.image.thumb {
-			text-align: right;
+			text-align: center;
 		}
 
 			.image.thumb:after {
@@ -2602,7 +2602,7 @@ input, select, textarea {
 		left: 0;
 		padding: 8em 4em;
 		position: fixed;
-		text-align: center;
+		text-align: right;
 		top: 0;
 		width: 35%;
 	}
