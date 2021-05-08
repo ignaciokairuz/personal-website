@@ -2082,7 +2082,7 @@ input, select, textarea {
 				margin: -1.25em 0 0 -3em;
 				opacity: 0;
 				padding: 0 1.5em;
-				position: absolute;
+				position: relative;
 				text-align: center;
 				text-decoration: none;
 				top: 50%;
@@ -2602,7 +2602,7 @@ input, select, textarea {
 		left: 0;
 		padding: 8em 4em;
 		position: fixed;
-		text-align: right;
+		text-align: center;
 		top: 0;
 		width: 35%;
 	}
