@@ -2446,16 +2446,16 @@ input, select, textarea {
 		background-color: transparent;
 		border-radius: 0.35em;
 		border: solid 3px #efefef;
-		color: #787878 !important;
+		color: #f00000 !important;
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 400;
-		height: 3.15em;
+		height: 7.15em;
 		height: calc(2.75em + 6px);
 		line-height: 2.75em;
 		min-width: 10em;
 		padding: 0 1.5em;
-		text-align: center;
+		text-align: right;
 		text-decoration: none;
 		white-space: nowrap;
 	}
