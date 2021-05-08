@@ -2592,7 +2592,7 @@ input, select, textarea {
         -ms-justify-content: space-between;
         justify-content: space-between;
         background-color: #1f1815;
-        background-attachment: fixed,                              fixed;
+        background-attachment: scroll,                              scroll;
         background-image: url("images/overlay.png"), url("../../images/bg.jpg");
         background-position: top left,                          top left;
         background-repeat: repeat,                              no-repeat;
@@ -2601,7 +2601,7 @@ input, select, textarea {
         height: 100%;
         left: 0;
         padding: 8em 4em;
-        position: absolute;
+        position: fixed;
         text-align: right;
         top: 0;
         width: 35%;
@@ -2968,7 +2968,7 @@ input, select, textarea {
     }
 
     body.is-touch #header {
-        background-attachment: fixed;
+        background-attachment: scroll;
         background-size: auto, cover;
     }
 
@@ -3053,12 +3053,12 @@ input, select, textarea {
         /* Header */
 
             #header {
-                background-attachment: fixed;
+                /*background-attachment: scroll;*/
                 background-position: top left, center center;
                 background-size: auto,      cover;
                 left: auto;
                 padding: 6em 4em;
-                position: relative;
+                position: fixed;
                 text-align: center;
                 top: auto;
                 width: 100%;
@@ -3076,7 +3076,7 @@ input, select, textarea {
         /* Footer */
 
             #footer {
-                background-attachment: fixed;
+                /*background-attachment: scroll;*/
                 background-color: #1f1815;
                 background-image: url("images/overlay.png"), url("../../images/bg.jpg");
                 background-position: top left,                      bottom center;
@@ -3085,7 +3085,7 @@ input, select, textarea {
                 bottom: auto;
                 left: auto;
                 padding: 4em 4em 6em 4em;
-                position: relative;
+                position: fixed;
                 text-align: center;
                 width: 100%;
             }
