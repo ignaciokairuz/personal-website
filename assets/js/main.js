@@ -14,7 +14,7 @@
 		settings = {
 
 			// Parallax background effect?
-				parallax: false,
+				parallax: ,
 
 			// Parallax factor (lower = more intense, higher = less intense).
 				parallaxFactor: 20
