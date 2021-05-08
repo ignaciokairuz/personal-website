@@ -2054,10 +2054,10 @@ input, select, textarea {
 			content: '';
 			display: block;
 			height: 100%;
-			left: 50%;
+			left: 0;
 			opacity: 0.5;
 			position: absolute;
-			top: 50%;
+			top: 0;
 			width: 100%;
 		}
 
@@ -2082,7 +2082,7 @@ input, select, textarea {
 				margin: -1.25em 0 0 -3em;
 				opacity: 0;
 				padding: 0 1.5em;
-				position: relative;
+				position: absolute;
 				text-align: center;
 				text-decoration: none;
 				top: 50%;
@@ -2446,7 +2446,7 @@ input, select, textarea {
 		background-color: transparent;
 		border-radius: 0.35em;
 		border: solid 3px #efefef;
-		color: #f787878 !important;
+		color: #787878 !important;
 		cursor: pointer;
 		display: inline-block;
 		font-weight: 400;
@@ -2594,15 +2594,15 @@ input, select, textarea {
 		background-color: #1f1815;
 		background-attachment: scroll,								scroll;
 		background-image: url("images/overlay.png"), url("../../images/bg.jpg");
-		background-position: center,							top;
+		background-position: top left,							top left;
 		background-repeat: repeat,								no-repeat;
-		background-size: auto,								200%;
+		background-size: auto,								150%;
 		color: rgba(255, 255, 255, 0.5);
 		height: 100%;
 		left: 0;
 		padding: 8em 4em;
 		position: fixed;
-		text-align: center;
+		text-align: right;
 		top: 0;
 		width: 35%;
 	}
