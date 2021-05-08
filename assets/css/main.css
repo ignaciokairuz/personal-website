@@ -2054,10 +2054,10 @@ input, select, textarea {
 			content: '';
 			display: block;
 			height: 100%;
-			left: 0;
+			left: 50%;
 			opacity: 0.5;
 			position: absolute;
-			top: 0;
+			top: 50%;
 			width: 100%;
 		}
 
