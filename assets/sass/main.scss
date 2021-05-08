@@ -240,7 +240,7 @@ $size-header-pad: 4em;
 	}
 
 	pre {
-		//-webkit-overflow-scrolling: touch;
+		-webkit-overflow-scrolling: touch;
 		font-family: _font(family-fixed);
 		font-size: 0.9em;
 		margin: 0 0 _size(element-margin) 0;
@@ -890,7 +890,7 @@ $size-header-pad: 4em;
 /* Table */
 
 	.table-wrapper {
-		//-webkit-overflow-scrolling: touch;
+		-webkit-overflow-scrolling: touch;
 		overflow-x: auto;
 	}
 
@@ -1073,7 +1073,7 @@ $size-header-pad: 4em;
 		@include vendor('align-items', 'flex-end');
 		@include vendor('justify-content', 'space-between');
 		background-color:		_palette(accent2, bg);
-		//background-attachment:	scroll,								scroll;
+		background-attachment:	scroll,								scroll;
 		background-image:		url('images/overlay.png'),			url('../../images/bg.jpg');
 		background-position:	top left,							top left;
 		background-repeat:		repeat,								no-repeat;
@@ -1337,7 +1337,7 @@ $size-header-pad: 4em;
 		}
 
 		#header {
-			//background-attachment:	scroll;
+			background-attachment:	scroll;
 			background-size:		auto, cover;
 		}
 
@@ -1443,7 +1443,7 @@ $size-header-pad: 4em;
 		/* Header */
 
 			#header {
-				//background-attachment:	scroll;
+				background-attachment:	scroll;
 				background-position:	top left,	center center;
 				background-size:		auto,		cover;
 				left: auto;
@@ -1466,7 +1466,7 @@ $size-header-pad: 4em;
 		/* Footer */
 
 			#footer {
-				//background-attachment:	scroll;
+				background-attachment:	scroll;
 				background-color:		_palette(accent2, bg);
 				background-image:		url('images/overlay.png'),		url('../../images/bg.jpg');
 				background-position:	top left,						bottom center;
