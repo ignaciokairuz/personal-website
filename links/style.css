@@ -9,7 +9,7 @@
 
 body {
     background-color: var(--bgColor);
-    background-image: url("./assets/deepSea.png");
+    background-image: url("./assets/background.png");
     background-size: 120%;
 }
 
