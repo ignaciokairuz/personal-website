@@ -67,6 +67,18 @@ li:hover .fab{
     
 }
 
+li:hover .fas{
+    background-color: var(--bgColor);
+    color: var(--accentColor);
+    
+}
+
+li:hover .far{
+    background-color: var(--bgColor);
+    color: var(--accentColor);
+    
+}
+
 .fab {
     font-family: 'Font Awesome 5.15.3 Free';
     position: relative;
@@ -80,7 +92,28 @@ li:hover .fab{
 
 }
 
-/*.fab:hover {
+.fas {
+    font-family: 'Font Awesome 5.15.3 Free';
+    position: relative;
+    /* Adjust these values accordingly */
+    top: 5px;
+    left: -200px;
 
-    color: red;
+    color: var(--bgColor);
+
+    transition: all .25s cubic-bezier(.08, .59, .29, .99);
+
+}
+
+.far {
+    font-family: 'Font Awesome 5.15.3 Free';
+    position: relative;
+    /* Adjust these values accordingly */
+    top: 5px;
+    left: -200px;
+
+    color: var(--bgColor);
+
+    transition: all .25s cubic-bezier(.08, .59, .29, .99);
+
 }
