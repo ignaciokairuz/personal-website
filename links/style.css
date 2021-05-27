@@ -75,25 +75,25 @@ list-style-type: none;
     border: solid var(--accentColor) 2px;
 }
 
-a:hover .link{
+span:hover .link{
     background-color: var(--bgColor);
     color: var(--accentColor);
     
 }
 
-a:hover .fab{
+span:hover .fab{
     background-color: var(--bgColor);
     color: var(--accentColor);
     
 }
 
-a:hover .fas{
+span:hover .fas{
     background-color: var(--bgColor);
     color: var(--accentColor);
     
 }
 
-a:hover .far{
+span:hover .far{
     background-color: var(--bgColor);
     color: var(--accentColor);
     
