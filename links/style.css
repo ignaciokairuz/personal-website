@@ -47,11 +47,11 @@ body {
     text-align: center;
     text-decoration: none;
 }
-
+/*
 ul
 {
 list-style-type: none;
-}
+}*/
 
 #links {
     max-width: 675px;
@@ -75,25 +75,25 @@ list-style-type: none;
     border: solid var(--accentColor) 2px;
 }
 
-li:hover .link{
+a:hover .link{
     background-color: var(--bgColor);
     color: var(--accentColor);
     
 }
 
-li:hover .fab{
+a:hover .fab{
     background-color: var(--bgColor);
     color: var(--accentColor);
     
 }
 
-li:hover .fas{
+a:hover .fas{
     background-color: var(--bgColor);
     color: var(--accentColor);
     
 }
 
-li:hover .far{
+a:hover .far{
     background-color: var(--bgColor);
     color: var(--accentColor);
     
