@@ -3219,3 +3219,11 @@ input, select, textarea {
 			}
 
 	}
+
+.LanguageSelect a {
+		color: rgba(255, 255, 255, 1);
+		font-size: 1em;
+	  font-weight: bolder;
+		padding: 2px;
+}
+
