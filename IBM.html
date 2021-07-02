@@ -31,15 +31,7 @@
 						<div class="content">
 							<span class="image fill" data-position="center"><img src="IBM/images/pic01.jpg" alt="" /></span>
 						</div>
-					<div class="content">
-					<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-					<h1><span>INTRODUCING</span>
-					WebCorpCo 2 . 0</h1>
-					<a href="#videoStory" class="button more" id="videoLink">Watch Video<i class="fa fa-play-circle" aria-hidden="true">&nbsp;</i></a>
-					<div id="videoStory" class="mfp-hide" style="max-width: 75%; margin: 0 auto;">
-					 <iframe width="853" height="480" src="ceosibm.mp4" frameborder="0" allowfullscreen></iframe>
-					</div>
-					</div>
+
 					</section>
 
 				<!-- Section -->
@@ -59,26 +51,34 @@
 						<header>
 							<h2>Feugiat consequat tempus ultrices</h2>
 						</header>
-						<div class="content">
-							<div class="popup" onclick="myFunction()" ><button>Preview</button>
-								<video class="popuptext" id="myPopup" style="width:800px;" >
-									<source src="ceosibm.mp4" type="video/mp4">
-								</video>
+						<a class="btn btn--primary" aria-controls="modal-video-1" href="#0" data-url="ceosibm.mp4" role="button">Open Video Modal</a>
+
+						<div class="modal modal--is-loading flex flex-center bg-contrast-higher bg-opacity-90% padding-x-md js-modal" id="modal-video-1">
+						  <div class="modal__content width-100% max-width-md max-height-100% overflow-auto shadow-md" role="alertdialog" aria-labelledby="modal-video-title-1" aria-describedby="">
+						    <p class="sr-only" id="modal-video-title-1">A video is being shown</p>
+
+						    <figure class="aspect-ratio-16:9">
+						      <video class="js-modal-video__media" controls src=""></video>
+						    </figure>
+						  </div>
+
+						  <div class="modal__loader" aria-hidden="true">
+						    <svg class="icon icon--lg color-bg icon--is-spinning">
+						      <path d="M24,48A24,24,0,1,1,48,24,24.027,24.027,0,0,1,24,48ZM24,4A20,20,0,1,0,44,24,20.023,20.023,0,0,0,24,4Z" opacity="0.4"></path>
+						      <path d="M48,24H44A20.023,20.023,0,0,0,24,4V0A24.028,24.028,0,0,1,48,24Z"></path>
+						    </svg>
+						  </div>
+
+						  <button class="reset modal__close-btn modal__close-btn--outer  js-modal__close js-tab-focus">
+						    <svg class="icon icon--sm" viewBox="0 0 24 24">
+						      <title>Close modal window</title>
+						      <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<line x1="3" y1="3" x2="21" y2="21" />
+							<line x1="21" y1="3" x2="3" y2="21" />
+						      </g>
+						    </svg>
+						  </button>
 						</div>
-						<script>
-							function myFunction() {
-							var popup = document.getElementById("myPopup");
-							popup.classList.toggle("show");
-
-							if (popup.paused){ 
-							popup.play(); 
-							}
-							else{ 
-							popup.pause();
-							}
-
-							}
-						</script>
 							<p><strong></strong> take the Apple in the UK the average Apple in the UK travels 3,700 miles just imagine the cost of that likewise another statistic the carrot in the US the average car in the u.s. travels 1007 of the miles who would have thought that in a land so big where we could grow the carrot around the corner it travels such a huge distance and that's why we need a smarter planet. give examples of how would I solve this.</p>
 							<ul class="feature-icons">
 								<li class="icon solid fa-laptop">Consequat tempus</li>
