@@ -4396,3 +4396,29 @@ body {
   width:100%;
   margin:0 auto;
 }
+	
+.popup .popuptext {
+visibility: hidden;
+background-color: #555;
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 8px 0;
+z-index: 1;
+bottom: 125%;
+left: 50%;
+margin-left: -80px;
+}
+.popup .show {
+visibility: visible;
+-webkit-animation: fadeIn 1s;
+animation: fadeIn 1s;
+}
+@-webkit-keyframes fadeIn {
+from {opacity: 0;} 
+to {opacity: 1;}
+}
+@keyframes fadeIn {
+from {opacity: 0;}
+to {opacity:1 ;}
+}
