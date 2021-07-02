@@ -78,11 +78,24 @@
 								    </a>
 								</div>
 							</div>
+							<div class="trailer">
+								<video src="ceosibm.mp4" controls="true"></video>
+								<img src="colse.png" class="close" onclick="toggle();">
+							<script>
+								function toggle(){
+									var trailer= document.querySelector("
+													    .trailer")
+									var video= document.querySelector("
+													    .video")
+									trailer.classList.toggle("active")
+									video.pause();
+									videocurrentTime=0;
+							</script>
 							<!-- Section -->
 								<section>
 									<header>
 										<h3>Erat aliquam</h3>
-										<p><strong>"</strong>We believe that progress is made through progressive thinking, progressive leadership, progressive policy and progressive action. IBMers believe that the application of intelligence, reason and science<strong>"</strong>(between quotes; I totally agree with that)</p>
+										<p><a href="#" onclick="toggle();">We believe</a> that progress is made through progressive thinking, progressive leadership, progressive policy and progressive action. IBMers believe that the application of intelligence, reason and science<strong>"</strong>(between quotes; I totally agree with that)</p>
 									</header>
 									<div class="content">
 										<div class="gallery">
