@@ -82,15 +82,14 @@
 							<div class="trailer">
 								<video src="ceosibm.mp4" controls="true"></video>
 								<img src="close.png" class="close" onclick="toggle();">
-							<script>
+							</div>
+							<script type="text/javascript">
 								function toggle(){
-									var trailer= document.querySelector("
-													    .trailer")
-									var video= document.querySelector("
-													    .video")
-									trailer.classList.toggle("active")
+									var trailer= document.querySelector(".trailer")
+									var video= document.querySelector("video")
+									trailer.classList.toggle("active");
 									video.pause();
-									videocurrentTime=0;
+									video.currentTime=0;
 								}
 							</script>
 							<!-- Section -->
