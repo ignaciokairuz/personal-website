@@ -56,11 +56,14 @@
 						-webkit-box-pack: center;
 						justify-content: center;
 						} 
+						#close {
+						color: #fff;
+						}
 						</style>
 						<div  onclick="abremodal();">abrir</div>
 						<script> 
 
-						    function abremodal(){ $("body").append('<div id="modal"> <video id="mivideo"> <source src="http://previnsa.com/webnueva/supra.mp4" type="video/mp4"\><source src="http://previnsa.com/webnueva/supra.mp4" type="video/mp4">Tu navegador no implementa el elemento</video><div id="close"> Cerrar </div></div>')
+						    function abremodal(){ $("body").append('<div id="modal"> <video id="mivideo"> <source src="ceosibm.mp4" type="video/mp4"\><source src="http://previnsa.com/webnueva/supra.mp4" type="video/mp4">Tu navegador no implementa el elemento</video><div id="close"> Cerrar </div></div>')
 						document.getElementById('mivideo').play();
 						$( "#close" ).click(function() {
 						  $("#modal").remove() ;
