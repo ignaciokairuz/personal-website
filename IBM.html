@@ -11,7 +11,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="IBM/assets/css/main.css" />
 	</head>
 	<body class="is-preload">
 
@@ -28,7 +28,7 @@
 							</ul>
 						</header>
 						<div class="content">
-							<span class="image fill" data-position="center"><img src="images/pic01.jpg" alt="" /></span>
+							<span class="image fill" data-position="center"><img src="IBM/images/pic01.jpg" alt="" /></span>
 						</div>
 					</section>
 
@@ -39,7 +39,7 @@
 						</header>
 						<div class="content">
 							<p><strong>Lorem ipsum dolor</strong> sit amet consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor amet fermentum. Nullam venenatis erat id vehicula ultrices sed ultricies condimentum. Magna sed etiam consequat, et lorem adipiscing sed nulla. Volutpat nisl et tempus et dolor libero, feugiat magna tempus, sed et lorem adipiscing.</p>
-							<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
+							<span class="image main"><img src="IBM/images/pic02.jpg" alt="" /></span>
 						</div>
 					</section>
 
@@ -67,6 +67,28 @@
 						<header>
 							<h2>Ultrices erat magna sed condimentum</h2>
 						</header>
+						<a href="javascript:void(0)" id="video1">-- open video --</a>
+						<br />
+						<p>more on:<a href="https://netteria.net/html5-video-popup-jquery/105/">https://netteria.net/html5-video-popup-jquery/105/</a></p>
+						<p>&copy; Netteria.NET 2017</p>
+						<div id="vidBox">
+							<div id="videCont">
+								<video autoplay id="v1" loop controls="controls">
+							    <source src="video/VideoPopUpHTML5.webm" type="video/webm">
+							    <source src="ceosibm.mp4" type="video/mp4">
+							</video>
+							 </div>
+							</div>
+							    <script type="text/javascript">
+							    $(function () {
+							       $('#vidBox').VideoPopUp({
+									backgroundColor: "#17212a",
+									opener: "video1",
+								    maxweight: "640",
+								    idvideo: "v1"
+								});
+							    });
+						    </script>
 						<div class="content">
 							<p><strong>Integer mollis egestas</strong> nam maximus erat id euismod egestas. Pellentesque sapien ac quam. Lorem ipsum dolor sit nullam.</p>
 
@@ -78,10 +100,10 @@
 									</header>
 									<div class="content">
 										<div class="gallery">
-											<a href="images/gallery/fulls/01.jpg" class="landscape"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-											<a href="images/gallery/fulls/02.jpg"><img src="images/gallery/thumbs/02.jpg" alt="" /></a>
-											<a href="images/gallery/fulls/03.jpg"><img src="images/gallery/thumbs/03.jpg" alt="" /></a>
-											<a href="images/gallery/fulls/04.jpg" class="landscape"><img src="images/gallery/thumbs/04.jpg" alt="" /></a>
+											<a href="IBM/images/gallery/fulls/01.jpg" class="landscape"><img src="IBM/images/gallery/thumbs/01.jpg" alt="" /></a>
+											<a href="IBM/images/gallery/fulls/02.jpg"><img src="IBM/images/gallery/thumbs/02.jpg" alt="" /></a>
+											<a href="IBM/images/gallery/fulls/03.jpg"><img src="IBM/images/gallery/thumbs/03.jpg" alt="" /></a>
+											<a href="IBM/images/gallery/fulls/04.jpg" class="landscape"><img src="IBM/images/gallery/thumbs/04.jpg" alt="" /></a>
 										</div>
 									</div>
 								</section>
@@ -94,9 +116,9 @@
 									</header>
 									<div class="content">
 										<div class="gallery">
-											<a href="images/gallery/fulls/05.jpg" class="landscape"><img src="images/gallery/thumbs/05.jpg" alt="" /></a>
-											<a href="images/gallery/fulls/06.jpg"><img src="images/gallery/thumbs/06.jpg" alt="" /></a>
-											<a href="images/gallery/fulls/07.jpg"><img src="images/gallery/thumbs/07.jpg" alt="" /></a>
+											<a href="IBM/images/gallery/fulls/05.jpg" class="landscape"><img src="IBM/images/gallery/thumbs/05.jpg" alt="" /></a>
+											<a href="IBM/images/gallery/fulls/06.jpg"><img src="IBM/images/gallery/thumbs/06.jpg" alt="" /></a>
+											<a href="IBM/images/gallery/fulls/07.jpg"><img src="IBM/images/gallery/thumbs/07.jpg" alt="" /></a>
 										</div>
 									</div>
 								</section>
@@ -109,9 +131,8 @@
 									</header>
 									<div class="content">
 										<div class="gallery">
-											<a href="images/gallery/fulls/08.jpg" class="portrait"><img src="images/gallery/thumbs/08.jpg" alt="" /></a>
-											<a href="images/gallery/fulls/09.jpg" class="portrait"><img src="images/gallery/thumbs/09.jpg" alt="" /></a>
-											<a href="images/gallery/fulls/10.jpg" class="landscape"><img src="images/gallery/thumbs/10.jpg" alt="" /></a>
+											<a href="IBM/images/gallery/fulls/09.jpg" class="portrait"><img src="IBM/images/gallery/thumbs/09.jpg" alt="" /></a>
+											<a href="IBM/images/gallery/fulls/10.jpg" class="landscape"><img src="IBM/images/gallery/thumbs/10.jpg" alt="" /></a>
 										</div>
 									</div>
 								</section>
@@ -460,12 +481,14 @@ print 'Sorted in ' + i + ' iterations.';</code></pre>
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="IBM/assets/js/jquery.min.js"></script>
+			<script src="IBM/assets/js/jquery.scrolly.min.js"></script>
+			<script src="IBM/assets/js/browser.min.js"></script>
+			<script src="IBM/assets/js/breakpoints.min.js"></script>
+			<script src="IBM/assets/js/util.js"></script>
+			<script src="IBM/assets/js/main.js"></script>
+			<script src="IBM/assets/js/jquery-3.1.1.min.js"></script>
+			<script src="IBM/assets/js/videopopup.js"></script>
 
 	</body>
 </html>
