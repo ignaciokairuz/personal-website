@@ -41,8 +41,33 @@
 							<p><strong>Lorem ipsum dolor</strong> sit amet consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor amet fermentum. Nullam venenatis erat id vehicula ultrices sed ultricies condimentum. Magna sed etiam consequat, et lorem adipiscing sed nulla. Volutpat nisl et tempus et dolor libero, feugiat magna tempus, sed et lorem adipiscing.</p>
 							<span class="image main"><img src="IBM/images/pic02.jpg" alt="" /></span>
 						</div>
-					</section>
+						<style>
+						#modal {
+						position: absolute;
+						width: 100vw;
+						height: 100vh;
+						left: 0;
+						top: 0;
+						background: rgba(0,0,0,0.7);
+						display: -webkit-box;
+						display: -ms-flexbox;
+						display: flex;
+						align-content: center;
+						-webkit-box-pack: center;
+						justify-content: center;
+						} 
+						</style>
+						<div  onclick="abremodal();">abrir</div>
+						<script> 
 
+						    function abremodal(){ $("body").append('<div id="modal"> <video id="mivideo"> <source src="http://previnsa.com/webnueva/supra.mp4" type="video/mp4"\><source src="http://previnsa.com/webnueva/supra.mp4" type="video/mp4">Tu navegador no implementa el elemento</video><div id="close"> Cerrar </div></div>')
+						document.getElementById('mivideo').play();
+						$( "#close" ).click(function() {
+						  $("#modal").remove() ;
+						});
+						}
+						    </script>
+					</section>
 				<!-- Section -->
 					<section>
 						<header>
