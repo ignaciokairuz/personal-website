@@ -237,6 +237,134 @@
 
 							<!-- Section -->
 								<section>
+									<style>
+										input[type="checkbox"]{
+										  display:none;
+										}
+
+										.flex{
+										  display: flex;
+										  align-items: center;
+										  height: 100vh;
+										}
+
+										.close{
+										  width: 2rem;
+										  height: 2rem;
+										  background-color: rgba(255,255,255,0.85);
+										  border-radius: 100%;
+										  display: block;
+										  font-size: 1px;
+										  text-indent: -999em;
+										  position: absolute;
+										  border: 1px solid #000;
+										  top: -1rem;
+										  right: -1rem;
+										  z-index: 999;
+										  box-shadow: 0px 2px 10px rgba(0,0,0,0.35);
+										  transition: all 0.25s ease-out;
+										  &:hover,
+										  &:focus{
+										    transform: scale(1.1);
+										    background-color: rgba(255,255,255,1);
+										  }
+										}
+
+										.close:after{
+										  font-weight: 300;
+										  content: "×";
+										  text-indent: 0;
+										  font-size: 1.4rem;
+										  position: absolute;
+										  top: 0.15rem;
+										  left: 0.525rem;
+										}
+
+										.btn{
+										  font-family: "tondo", sans-serif;
+										  cursor: pointer;
+										  border: 1px solid #aaa;
+										  margin: 0 auto 3em;
+										  display: block;
+										  width: 200px;
+										  text-align: center;
+										  padding: 0.75em 1em;
+										  box-sizing: border-box;
+										  text-transform: uppercase;
+										  letter-spacing: 0.2em;
+										  transition: all 0.1s ease;
+										  &:hover,
+										  &:focus{
+										    background-color: #333;
+										    border: 1px solid #333;
+										    color: white;
+										  }
+										}
+
+										#overlay{
+										  transition: opacity 0.35s ease;
+										  padding: 0em;
+										  box-sizing: border-box;
+										  opacity: 0;
+										  display: flex;
+										  align-items: center;
+										  position: absolute;
+										  background-color: rgba(0,0,0,0.85);
+										  width: 1px;
+										  height: 1px;
+										  top: 0;
+										  left: 0;
+										  & > *{
+										    display: none;
+										  }
+										}
+
+										input:checked + #overlay{
+										  width: 100%;
+										  height: 100%;
+										  padding: 1em;
+										  opacity: 1;
+										  @media (min-width: 500px) {
+										    padding: 2em;
+										  }
+										  @media (min-width: 900px) {
+										    padding: 4em;
+										  }
+										  & > *{
+										    display: block;
+										  }
+										}
+
+										.video-wrapper {
+										  box-sizing: border-box;
+										  min-width: 100%;
+											position: relative;
+											padding-bottom: 56.25%; /* 16:9 */
+											padding-top: 25px;
+											height: 0;
+										}
+										.video-wrapper iframe {
+											position: absolute;
+											top: 0;
+											left: 0;
+											width: 100%;
+											height: 100%;
+										}
+									</style>	
+									<div class="flex">
+
+									  <label class="btn" for="show-vid">Show Video</label>
+
+									</div>
+
+									<input id="show-vid" type="checkbox" />
+
+									<div id="overlay" for="show-vid">
+									  <div class="video-wrapper">
+									    <label class="close" for="show-vid">Hide Video</label>
+									    <iframe width="560" height="315" src="https://www.youtube.com/embed/ScMzIvxBSi4" frameborder="0" allowfullscreen></iframe>
+									  </div>
+									</div>
 									<header>
 										<h3>Nisl consequat</h3>
 										<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam sed facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet mauris. Ut magna finibus nisi nec lacinia ipsum maximus.</p>
