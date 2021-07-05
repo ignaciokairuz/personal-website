@@ -2839,52 +2839,52 @@ input, select, textarea {
 
 
 
-.arrow-wrap {
-  position:relative;
-  z-index:1;
-  left:50%;
-  top:-5em;
-  margin-left:-5em;
-  background:#111;
-  width:10em;
-  height:10em;
-  padding:4em 2em;
-  border-radius:50%;
-  font-size:0.5em;
-  display:block;
-  box-shadow:0px 0px 5px 0px #333;
-}
+	.arrow-wrap {
+	  position:relative;
+	  z-index:1;
+	  left:50%;
+	  top:-5em;
+	  margin-left:-5em;
+	  background:#111;
+	  width:10em;
+	  height:10em;
+	  padding:4em 2em;
+	  border-radius:50%;
+	  font-size:0.5em;
+	  display:block;
+	  box-shadow:0px 0px 5px 0px #333;
+	}
 
-.arrow {
-  float:left;
-  position:relative;
-  width: 0px;
-height: 99px;
-border-style: solid;
-border-width: 3em 3em 0 3em;
-border-color: #ff0000 transparent transparent transparent;
-  -webkit-transform:rotate(360deg)
-}
+	.arrow {
+	  float:left;
+	  position:relative;
+	  width: 0px;
+	height: 99px;
+	border-style: solid;
+	border-width: 3em 3em 0 3em;
+	border-color: #ff0000 transparent transparent transparent;
+	  -webkit-transform:rotate(360deg)
+	}
 
-.arrow:after {
-  content:'';
-  position:absolute;
-  top:-3.2em;
-  left:-3em;
-  width: 0px;
-height: 0px;
-border-style: solid;
-border-width: 3em 3em 0 3em;
-border-color: #111 transparent transparent transparent;
-  -webkit-transform:rotate(360deg)
-}
+	.arrow:after {
+	  content:'';
+	  position:absolute;
+	  top:-3.2em;
+	  left:-3em;
+	  width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 3em 3em 0 3em;
+	border-color: #111 transparent transparent transparent;
+	  -webkit-transform:rotate(360deg)
+	}
 
 
 
-  .arrow-wrap .arrow {
-    -webkit-animation: arrows 2.8s 0.4s;
-    -webkit-animation-delay: 3s;
-  }
+	  .arrow-wrap .arrow {
+	    -webkit-animation: arrows 2.8s 0.4s;
+	    -webkit-animation-delay: 3s;
+	  }
 /* Gallery */
 
 	@-moz-keyframes gallery-modal-spinner {
