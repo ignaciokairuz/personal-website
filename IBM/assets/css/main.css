@@ -2837,30 +2837,64 @@ input, select, textarea {
 
 /* Arrow */
 
-	a.arrow {
-		border-bottom: 0;
-		display: inline-block;
-		height: 4rem;
-		position: relative;
-		width: 6rem;
-	}
+@media (max-width: 480px){
+   .container {
+    width: calc(100% - 50px);
+    border: 1px solid black;
+    margin: 50px auto;
+    height: auto;
+    position: relative;    
+    border-radius: 2px;
+    padding: 10px;
+    padding-top: 25px;
+} 
 
-		a.arrow .label {
-			display: none;
-		}
+.arrow-wrap {
+  position:relative;
+  z-index:1;
+  left:50%;
+  top:-5em;
+  margin-left:-5em;
+  background:#111;
+  width:10em;
+  height:10em;
+  padding:4em 2em;
+  border-radius:50%;
+  font-size:0.5em;
+  display:block;
+  box-shadow:0px 0px 5px 0px #333;
+}
 
-		a.arrow:before {
-			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 512 512'%3E%3Cpath d='M442.53,346.28L293.65,495.16c-0.33,0.33-0.7,0.62-1.05,0.94c-9.16,9.77-22.15,15.9-36.6,15.9 c-14.44,0-27.43-6.13-36.59-15.88c-0.35-0.33-0.72-0.62-1.06-0.96L69.47,346.28c-19.62-19.62-19.62-51.44,0-71.05 c19.62-19.62,51.43-19.62,71.06,0l65.23,65.23V50.24C205.76,22.5,228.25,0,256,0s50.24,22.5,50.24,50.24v290.21l65.23-65.23 c19.62-19.62,51.43-19.62,71.05,0C462.15,294.84,462.15,326.66,442.53,346.28z' fill='%23000000' /%3E%3C/svg%3E");
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: contain;
-			content: '';
-			display: inline-block;
-			height: 100%;
-			position: relative;
-			width: 3rem;
-		}
+.arrow {
+  float:left;
+  position:relative;
+  width: 0px;
+height: 99px;
+border-style: solid;
+border-width: 3em 3em 0 3em;
+border-color: #ff0000 transparent transparent transparent;
+  -webkit-transform:rotate(360deg)
+}
 
+.arrow:after {
+  content:'';
+  position:absolute;
+  top:-3.2em;
+  left:-3em;
+  width: 0px;
+height: 0px;
+border-style: solid;
+border-width: 3em 3em 0 3em;
+border-color: #111 transparent transparent transparent;
+  -webkit-transform:rotate(360deg)
+}
+
+
+
+  .arrow-wrap .arrow {
+    -webkit-animation: arrows 2.8s 0.4s;
+    -webkit-animation-delay: 3s;
+  }
 /* Gallery */
 
 	@-moz-keyframes gallery-modal-spinner {
