@@ -2837,7 +2837,16 @@ input, select, textarea {
 
 /* Arrow */
 
-
+@media (max-width: 480px){
+   .container {
+    width: calc(100% - 50px);
+    border: 1px solid black;
+    margin: 50px auto;
+    height: auto;
+    position: relative;    
+    border-radius: 2px;
+    padding: 10px;
+    padding-top: 25px;
 
 	.arrow-wrap {
 	  position:relative;
