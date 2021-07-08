@@ -73,168 +73,176 @@
 					</section>
 				<!-- Section -->
 					<section>
+						    <div class="container-all">
+
+							<input type="radio" id="1" name="image-slide" hidden/>
+							<input type="radio" id="2" name="image-slide" hidden/>
+							<input type="radio" id="3" name="image-slide" hidden/>
+
+							<div class="slide">
+
+							    <div class="item-slide">
+								<img src="Images/img1.jpg">
+							    </div>
+
+							    <div class="item-slide">
+								<img src="Images/img2.jpg">
+							    </div>
+
+							    <div class="item-slide">
+								<img src="Images/img3.jpg">
+							    </div>
+
+							</div>
+
+							<div class="pagination">
+
+							    <label class="pagination-item" for="1">
+								<img src="Images/img1.jpg">
+							    </label>
+
+							    <label class="pagination-item" for="2">
+								<img src="Images/img2.jpg">
+							    </label>
+
+							    <label class="pagination-item" for="3">
+								<img src="Images/img3.jpg">
+							    </label>
+
+							</div>
+
+						    </div>
 						<style>
+							body{
+							    display: flex;
+							    align-items: center;
+							    justify-content: center;
+							    padding: 30px;
+							}
 
-						body {font-family: Verdana, sans-serif; margin:0}
-						.mySlides {display: none}
-						img {vertical-align: middle;}
+							img{
+							    max-width: 100%;
+							}
 
-						/* Slideshow container */
-						.slideshow-container {
-						  max-width: 1000px;
-						  position: relative;
-						  margin: auto;
-						}
+							.container-all{
+							    position: relative;
+							    max-width: 1000px;
+							    width: 100%;
+							    border-radius: 6px;
+							    overflow: hidden;
+							}
 
-						/* Next & previous buttons */
-						.prev, .next {
-						  cursor: pointer;
-						  position: absolute;
-						  top: 50%;
-						  width: auto;
-						  padding: 16px;
-						  margin-top: -22px;
-						  color: white;
-						  font-weight: bold;
-						  font-size: 18px;
-						  transition: 0.6s ease;
-						  border-radius: 0 3px 3px 0;
-						  user-select: none;
-						}
+							.slide{
+							    display: flex;
+							    transform: translate3d(0, 0, 0);
+							    transition: all 600ms;
+							    animation-name: autoplay;
+							    animation-duration: 6.5s;
+							    animation-direction: alternate;
+							    animation-fill-mode: forwards;
+							    animation-iteration-count: infinite;
+							}
 
-						/* Position the "next button" to the right */
-						.next {
-						  right: 0;
-						  border-radius: 3px 0 0 3px;
-						}
+							.item-slide{
+							    position: relative;
+							    display: flex;
+							    flex-direction: column;
+							    flex-shrink: 0;
+							    flex-grow: 0;
+							    max-width: 100%;
+							}
 
-						/* On hover, add a black background color with a little bit see-through */
-						.prev:hover, .next:hover {
-						  background-color: rgba(0,0,0,0.8);
-						}
+							.pagination{
+							    position: absolute;
+							    bottom: 20px;
+							    left: 0;
+							    display: flex;
+							    flex-wrap: wrap;
+							    align-items: center;
+							    justify-content: center;
+							    width: 100%;
+							}
 
-						/* Caption text */
-						.text {
-						  color: #f2f2f2;
-						  font-size: 15px;
-						  padding: 8px 12px;
-						  position: absolute;
-						  bottom: 8px;
-						  width: 100%;
-						  text-align: center;
-						}
+							.pagination-item{
+							    display: flex;
+							    flex-direction: column;
+							    align-items: center;
+							    border: 2px solid white;
+							    width: 16px;
+							    height: 16px;
+							    border-radius: 4px;
+							    overflow: hidden;
+							    cursor: pointer;
+							    background: rgba(255, 255, 255, 0.5);
+							    margin: 0 10px;
+							    text-align: center;
+							    transition: all 300ms;
+							}
 
-						/* Number text (1/3 etc) */
-						.numbertext {
-						  color: #f2f2f2;
-						  font-size: 12px;
-						  padding: 8px 12px;
-						  position: absolute;
-						  top: 0;
-						}
+							.pagination-item:hover{
+							    transform: scale(2);
+							}
 
-						/* The dots/bullets/indicators */
-						.dot {
-						  cursor: pointer;
-						  height: 15px;
-						  width: 15px;
-						  margin: 0 2px;
-						  background-color: #bbb;
-						  border-radius: 50%;
-						  display: inline-block;
-						  transition: background-color 0.6s ease;
-						}
+							.pagination-item img{
+							    display: inline-block;
+							    max-width: none;
+							    height: 100%;
+							    transform: scale(1);
+							    opacity: 0;
+							    transition: all 300ms;
+							}
 
-						.active, .dot:hover {
-						  background-color: #717171;
-						}
+							.pagination-item:hover img{
+							    opacity: 1;
+							    transform: scale(1);
+							}
 
-						/* Fading animation */
-						.fade {
-						  -webkit-animation-name: fade;
-						  -webkit-animation-duration: 1.5s;
-						  animation-name: fade;
-						  animation-duration: 1.5s;
-						}
 
-						@-webkit-keyframes fade {
-						  from {opacity: .4} 
-						  to {opacity: 1}
-						}
+							input[id="1"]:checked ~ .slide{
+							    animation: none;
+							    transform: translate3d(0, 0, 0);
+							}
 
-						@keyframes fade {
-						  from {opacity: .4} 
-						  to {opacity: 1}
-						}
+							input[id="1"]:checked ~ .pagination .pagination-item[for="1"]{
+							    background: #fff;
+							}
 
-						/* On smaller screens, decrease text size */
-						@media only screen and (max-width: 300px) {
-						  .prev, .next,.text {font-size: 11px}
-						}
+							input[id="2"]:checked ~ .slide{
+							    animation: none;
+							    transform: translate3d(calc(-100% * 1), 0, 0);
+							}
+
+							input[id="2"]:checked ~ .pagination .pagination-item[for="2"]{
+							    background: #fff;
+							}
+
+
+							input[id="3"]:checked ~ .slide{
+							    animation: none;
+							    transform: translate3d(calc(-100% * 2), 0, 0);
+							}
+
+							input[id="3"]:checked ~ .pagination .pagination-item[for="3"]{
+							    background: #fff;
+							}
+
+
+							@keyframes autoplay{
+							    33%{
+								transform: translate3d(calc(-100% * 0), 0, 0);
+							    }
+
+							    66%{
+								transform: translate3d(calc(-100% * 1), 0, 0);
+							    }
+
+							    100%{
+								transform: translate3d(calc(-100% * 2), 0, 0);
+							    }
+							}
+
+
 						</style>
-						</head>
-						<body>
-
-						<div class="slideshow-container">
-
-						<div class="mySlides fade">
-						  <div class="numbertext">1 / 3</div>
-						  <img src="img_nature_wide.jpg" style="width:100%">
-						  <div class="text">Caption Text</div>
-						</div>
-
-						<div class="mySlides fade">
-						  <div class="numbertext">2 / 3</div>
-						  <img src="img_snow_wide.jpg" style="width:100%">
-						  <div class="text">Caption Two</div>
-						</div>
-
-						<div class="mySlides fade">
-						  <div class="numbertext">3 / 3</div>
-						  <img src="img_mountains_wide.jpg" style="width:100%">
-						  <div class="text">Caption Three</div>
-						</div>
-
-						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-						<a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-						</div>
-						<br>
-
-						<div style="text-align:center">
-						  <span class="dot" onclick="currentSlide(1)"></span> 
-						  <span class="dot" onclick="currentSlide(2)"></span> 
-						  <span class="dot" onclick="currentSlide(3)"></span> 
-						</div>
-
-						<script>
-						var slideIndex = 1;
-						showSlides(slideIndex);
-
-						function plusSlides(n) {
-						  showSlides(slideIndex += n);
-						}
-
-						function currentSlide(n) {
-						  showSlides(slideIndex = n);
-						}
-
-						function showSlides(n) {
-						  var i;
-						  var slides = document.getElementsByClassName("mySlides");
-						  var dots = document.getElementsByClassName("dot");
-						  if (n > slides.length) {slideIndex = 1}    
-						  if (n < 1) {slideIndex = slides.length}
-						  for (i = 0; i < slides.length; i++) {
-						      slides[i].style.display = "none";  
-						  }
-						  for (i = 0; i < dots.length; i++) {
-						      dots[i].className = dots[i].className.replace(" active", "");
-						  }
-						  slides[slideIndex-1].style.display = "block";  
-						  dots[slideIndex-1].className += " active";
-						}
-						</script>
 						<header>
 							<h2>Feugiat consequat tempus ultrices</h2>
 						</header>
