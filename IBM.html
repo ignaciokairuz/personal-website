@@ -73,248 +73,168 @@
 					</section>
 				<!-- Section -->
 					<section>
-							<div class="mainbox">
-								  <div class="container">
-								    <div class="carousel">
-									<div class="carousel-prev"></div>
-									<div class="carousel-next"></div>
-									<ul class="carousel-pagination">
-									    <li class="carousel-bullet"></li>
-									    <li class="carousel-bullet"></li>
-									    <li class="carousel-bullet"></li>
-									    <li class="carousel-bullet"></li>
-									    <li class="carousel-bullet"></li>
-									</ul>
-									<ul class="carousel-container">
-									    <li class="carousel-item">
-										<div class="item-1"></div>
-									    </li>
-									    <li class="carousel-item">
-										<div class="item-2"></div>
-									    </li>
-									    <li class="carousel-item">
-										<div class="item-3"></div>
-									    </li>
-									    <li class="carousel-item">
-										<div class="item-4"></div>
-									    </li>
-									    <li class="carousel-item">
-										<div class="item-5"></div>
-									    </li>
-									</ul>
-								    </div>
-								</div>
-							</div>
+<style>
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
 
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
 
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
 
-								<style>
-								.mainbox {
-								    box-sizing: border-box;
-								}
-								.container, .carousel-item, .item-1, .item-2, .item-3, .item-4, .item-5 , .carousel,.carousel-container,.carousel-prev,.carousel-next,.carousel-pagination,.carousel-bullet,
-								.container:before, .carousel-item:before, .item-1:before, .item-2:before, .item-3:before, .item-4:before, .item-5:before , .carousel:before,.carousel-container:before,.carousel-prev:before,.carousel-next:before,.carousel-pagination:before,.carousel-bullet:before, 
-								.container:after, .carousel-item:after, .item-1:after, .item-2:after, .item-3:after, .item-4:after, .item-5:after, .carousel:after,.carousel-container:after,.carousel-prev:after,.carousel-next:after,.carousel-pagination:after,.carousel-bullet:after {
-								    box-sizing: inherit;
-								}
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
 
-								body {
-								    background-color: #e1f0fa;
-								}
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
 
-								h1 {
-								    color: #555;
-								    text-align: center;
-								    margin: 50px 0;
-								}
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
 
-								.container {
-								    width: 70%;
-								    margin: 0 auto;
-								    border: 2px solid #bbb;
-								}
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
 
-								.carousel-item > div {
-								    height: 400px;
-								    line-height: 500px;
-								    font-size: 1.5em;
-								    text-align: center;
-								    color: #fff;
-								}
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
 
-								.item-1 {
-								    background-color: #3498db;
-								}
+.active, .dot:hover {
+  background-color: #717171;
+}
 
-								.item-2 {
-								    background-color: #B22222;
-								}
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
 
-								.item-3 {
-								    background-color: #006400;
-								}
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
 
-								.item-4 {
-								    background-color: #FFD700;
-								}
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
 
-								.item-5 {
-								    background-color: #FF4500;
-								}
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+</head>
+<body>
 
-								/* Carousel */
+<div class="slideshow-container">
 
-								.carousel {
-								    position: relative;
-								    overflow: hidden;
-								    width: 100%;
-								}
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="img_nature_wide.jpg" style="width:100%">
+  <div class="text">Caption Text</div>
+</div>
 
-								.carousel-container {
-								    list-style: none;
-								    overflow: hidden;
-								    padding: 0;
-								    margin: 0;
-								    width: 500%;
-								/*     transition: transform 0.3s cubic-bezier(.694, .0482, .335, 1); */
-								}
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="img_snow_wide.jpg" style="width:100%">
+  <div class="text">Caption Two</div>
+</div>
 
-								.carousel-item {
-								    position: relative;
-								    float: left;
-								    width: 20%;
-								}
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="img_mountains_wide.jpg" style="width:100%">
+  <div class="text">Caption Three</div>
+</div>
 
-								/* Next / Prev Buttons */
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
 
-								.carousel-prev,
-								.carousel-next {
-								    position: absolute;
-								    top: 50%;
-								    background-color: #222;
-								    opacity: 0.7;
-								    border-radius: 50%;
-								    color: #fff;
-								    font-size: 1em;
-								    cursor: pointer;
-								    width: 40px;
-								    height: 40px;
-								    line-height: 40px;
-								/*     -webkit-transform: translate(0, -50%);
-								    transform: translate(0, -50%); */
-								    text-align: center;
-								    z-index: 10;
-								/*     transition: opacity 0.3s ease; */
-								}
+</div>
+<br>
 
-								.carousel-prev {
-								    left: 2%;
-								    padding-right: 3px;
-								}
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
 
-								.carousel-prev::before {
-								    content: '\f053';
-								    font-family: "FontAwesome";
-								}
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
 
-								.carousel-next {
-								    right: 2%;
-								    padding-left: 3px;
-								}
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
 
-								.carousel-next::before {
-								    content: '\f054';
-								    font-family: "FontAwesome";
-								}
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
 
-								.carousel-prev:hover,
-								.carousel-next:hover {
-								    opacity: 1;
-								}
-
-								/* Pagination */
-
-								.carousel-pagination {
-								    list-style: none;
-								    position: absolute;
-								    bottom: 3%;
-								    left: 0;
-								    right: 0;
-								    width: 50%;
-								    padding: 0;
-								    margin: 0 auto;
-								    text-align: center;
-								    z-index: 10;
-								}
-
-								.carousel-bullet {
-								    display: inline-block;
-								    width: 12px;
-								    height: 12px;
-								    background-color: #000;
-								    cursor: pointer;
-								    margin: 0 7px;
-								    border-radius: 50%;
-								    opacity: 0.5;
-								/*     transition-property: transform, opacity, background-color;
-								    transition-duration: 0.3s; */
-								}
-
-								.carousel-bullet:hover {
-								    -webkit-transform: scale(1.3);
-								    transform: scale(1.3);
-								}
-
-								.carousel-bullet.active-bullet, 
-								.carousel-bullet.active-bullet:hover {
-								    opacity: 1;
-								    -webkit-transform: scale(1.3);
-								    transform: scale(1.3);
-								    background-color: #fff;
-								    cursor: default;
-								}
-
-
-								</style>
-								<script>
-								var carousel = document.querySelector('.carousel');
-								var container = carousel.querySelector('.carousel-container');
-								var prevBtn = carousel.querySelector('.carousel-prev');
-								var nextBtn = carousel.querySelector('.carousel-next');
-								var pagination = carousel.querySelector('.carousel-pagination');
-								var bullets = [].slice.call(carousel.querySelectorAll('.carousel-bullet'));
-								var totalItems = container.querySelectorAll('.carousel-item').length;
-								var percent = (100 / totalItems);
-								var currentIndex = 0;
-
-								function next() {
-								    slideTo(currentIndex + 1);
-								}
-
-								function prev() {
-								    slideTo(currentIndex - 1);
-								}
-
-								function slideTo(index) {
-								    index = index < 0 ? totalItems - 1 : index >= totalItems ? 0 : index;
-								    container.style.WebkitTransform = container.style.transform = 'translate(-' + (index * percent) + '%, 0)';
-								    bullets[currentIndex].classList.remove('active-bullet');
-								    bullets[index].classList.add('active-bullet');
-								    currentIndex = index;
-								}
-
-								bullets[currentIndex].classList.add('active-bullet');
-								prevBtn.addEventListener('click', prev, false);
-								nextBtn.addEventListener('click', next, false);
-
-								pagination.addEventListener('click', function(e) {
-								    var index = bullets.indexOf(e.target);
-								    if (index !== -1 && index !== currentIndex) {
-									slideTo(index);
-								    }
-								}, false);
-
-								</script>
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
 						<header>
 							<h2>Feugiat consequat tempus ultrices</h2>
 						</header>
