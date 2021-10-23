@@ -2635,12 +2635,13 @@ input, select, textarea {
 			color: rgba(255, 255, 255, 1);
 			font-size: 1.35em;
 			line-height: 1.75em;
-			margin: 0;
+			margin: -0.8em;
 		}
 
 		#header .image.avatar {
 			margin: 0 0 1em 0;
 			width: 6.25em;
+			top:-1em;
 		}
 
 /* Footer */
@@ -2655,7 +2656,7 @@ input, select, textarea {
 
 	#footer .copyright {
 		color: rgba(255, 255, 255, 0.4);
-		font-size: 0.8em;
+		font-size: 0.7em;
 		list-style: none;
 		margin: 1em 0 0 0;
 		padding: 0;
