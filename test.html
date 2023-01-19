@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<div class="carousel">
+  <div class="carousel-slide">Slide 1</div>
+  <div class="carousel-slide">Slide 2</div>
+  <div class="carousel-slide">Slide 3</div>
+</div>
+<button class="left-arrow">&lt;</button>
+<button class="right-arrow">&gt;</button>
+
+<style>
+.carousel {
+  display: flex;
+}
+.carousel-slide {
+  flex: 1;
+}
+
+</style>
+<script>
+var slideIndex = 0;
+var slides = document.getElementsByClassName("carousel-slide");
+var leftArrow = document.getElementsByClassName("left-arrow")[0];
+var rightArrow = document.getElementsByClassName("right-arrow")[0];
+
+function showSlides(n) {
+  slideIndex = slideIndex + n;
+  if (slideIndex < 0) {
+    slideIndex = slides.length - 1;
+  }
+  if (slideIndex > slides.length - 1) {
+    slideIndex = 0;
+  }
+  for (var i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slides[slideIndex].style.display = "block";
+}
+
+leftArrow.addEventListener("click", function() {
+  showSlides(-1);
+});
+rightArrow.addEventListener("click", function() {
+  showSlides(1);
+});
+
+</script>
+  
+  
+</body>
+</html>
