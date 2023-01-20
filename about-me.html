@@ -36,7 +36,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre></h1>
 						@media only screen and (max-width:600px) {
 							iframe {
 							width: 100%;
-							height: 400px;
+							height: 100%;
 							}
 						}
 						</style>
@@ -47,95 +47,149 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre></h1>
 						<h5>Left &amp; Right</h5>
 						<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
 						<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-						<div class="carousel">
-						  <div class="carousel-item">
-						    <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="Image 1">
-						  </div>
-						  <div class="carousel-item">
-						    <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="Image 2">
-						  </div>
-						  <div class="carousel-item">
-						    <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 3">
-						  </div>
+						
+						<div id="carousel">
+						  <div class="arrow arrow-left"></div>
+						  <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="image 1">
+						  <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="image 2">
+						  <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="image 3">
+						  <div class="arrow arrow-right"></div>
 						</div>
 
 						<style>
-						.carousel {
-						  width: auto;
-						  height: auto;
-						  overflow: hidden;
+
+						@media (max-width: 600px) {
+						#carousel {
+						  width: 50%;
+						}
+						}
+
+						#carousel {
 						  position: relative;
 						}
 
-						.carousel-item {
-						  width: auto;
-						  height: auto;
+						.arrow {
+						  width: 75px;
+						  height: 75px;
 						  position: absolute;
 						  top: 0;
+						  bottom: 0;
+						  margin: auto;
+						  cursor: pointer;
+						  background-color: white;
+						  border-radius: 50%;
+						  z-index: 1;
+						}
+
+						#carousel img{
+						  margin: 0 75px;
+						}
+
+
+						.arrow::before {
+						  content: "";
+						  width: 25px;
+						  height: 25px;
+						  position: absolute;
+						  top: 50%;
+						  left: 50%;
+						  transform: translate(-50%, -50%);
+						  border-top: 2px solid black;
+						  border-right: 2px solid black;
+						}
+
+						.arrow-left {
 						  left: 0;
 						}
 
-						.carousel-item img {
-						  width: auto;
-						  height: auto;
-						  object-fit: cover;
+						.arrow-left::before {
+						    transform: rotate(135deg) translate(-50%, -50%);
 						}
+
+						.arrow-right {
+						  right: 0;
+						}
+
+						.arrow-right::before {
+						    transform: rotate(-45deg) translate(-50%, -50%);
+						}
+
 						</style>
 
-
-
 						<script>
-						var carousel = document.querySelector(".carousel");
-						var items = document.querySelectorAll(".carousel-item");
-						var currentItem = 0;
-						var isEnabled = true;
+						const carousel = document.getElementById("carousel");
+						const images = carousel.getElementsByTagName("img");
+						let currentImage = 0;
 
-						function changeCurrentItem(n) {
-						  currentItem = (n + items.length) % items.length;
-						}
+						carousel.addEventListener("touchstart", handleTouchStart);
+						carousel.addEventListener("touchend", handleTouchEnd);
 
-						function hideItem(direction) {
-						  isEnabled = false;
-						  items[currentItem].classList.add(direction);
-						  items[currentItem].addEventListener("animationend", function() {
-						    this.classList.remove("active", direction);
-						  });
-						}
+						const leftArrow = document.querySelector('.arrow-left');
+						const rightArrow = document.querySelector('.arrow-right');
 
-						function showItem(direction) {
-						  items[currentItem].classList.add("next", direction);
-						  items[currentItem].addEventListener("animationend", function() {
-						    this.classList.remove("next", direction);
-						    this.classList.add("active");
-						    isEnabled = true;
-						  });
-						}
-
-						function nextItem(n) {
-						  hideItem("to-left");
-						  changeCurrentItem(n + 1);
-						  showItem("from-right");
-						}
-
-						function previousItem(n) {
-						  hideItem("to-right");
-						  changeCurrentItem(n - 1);
-						  showItem("from-left");
-						}
-
-						document.querySelector(".control.left").addEventListener("click", function() {
-						  if (isEnabled) {
-						    previousItem(currentItem);
+						leftArrow.addEventListener('click', function() {
+						  currentImage--;
+						  if (currentImage < 0) {
+						    currentImage = images.length - 1;
 						  }
+						  updateCarousel();
 						});
 
-						document.querySelector(".control.right").addEventListener("click", function() {
-						  if (isEnabled) {
-						    nextItem(currentItem);
+						rightArrow.addEventListener('click', function() {
+						  currentImage++;
+						  if (currentImage >= images.length) {
+						    currentImage = 0;
 						  }
+						  updateCarousel();
 						});
 
+						let xDown = null;
+						let yDown = null;
+
+						function handleTouchStart(event) {
+						  xDown = event.touches[0].clientX;
+						  yDown = event.touches[0].clientY;
+						}
+
+						function handleTouchEnd(event) {
+						  if (!xDown || !yDown) {
+						    return;
+						  }
+
+						  const xUp = event.changedTouches[0].clientX;
+						  const yUp = event.changedTouches[0].clientY;
+
+						  const xDiff = xDown - xUp;
+						  const yDiff = yDown - yUp;
+
+						  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+						    if (xDiff > 0) {
+						      currentImage++;
+						      if (currentImage >= images.length) {
+							currentImage = 0;
+						      }
+						      updateCarousel();
+						    } else {
+						      currentImage--;
+						      if (currentImage < 0) {
+							currentImage = images.length - 1;
+						      }
+						      updateCarousel();
+						    }
+						  }
+						  xDown = null;
+						  yDown = null;
+						}
+
+						function updateCarousel() {
+						  for (let i = 0; i < images.length; i++) {
+						    images[i].style.display = "none";
+						  }
+						  images[currentImage].style.display = "block";
+						}
+						updateCarousel()
 						</script>
+
 					</section>
 
 
