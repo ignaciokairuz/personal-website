@@ -13,7 +13,6 @@
   <div class="arrow arrow-right"></div>
 </div>
 
-
 <style>
 
 @media (max-width: 600px) {
@@ -21,7 +20,6 @@
   width: 50%;
 }
 }
-
  
 #carousel {
   position: relative;
@@ -68,10 +66,10 @@
     transform: rotate(-45deg) translate(-50%, -50%);
 }
 
-
 </style>
 <script>
 
+<script>
 const carousel = document.getElementById("carousel");
 const images = carousel.getElementsByTagName("img");
 let currentImage = 0;
@@ -117,8 +115,12 @@ function handleTouchEnd(event) {
   yDown = null;
 }
 
-
-  
+function updateCarousel() {
+  for (let i = 0; i < images.length; i++) {
+    images[i].style.display = "none";
+  }
+  images[currentImage].style.display = "block";
+}
 </script>
   
   
