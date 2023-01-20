@@ -76,6 +76,25 @@ let currentImage = 0;
 carousel.addEventListener("touchstart", handleTouchStart);
 carousel.addEventListener("touchend", handleTouchEnd);
 
+const leftArrow = document.querySelector('.arrow-left');
+const rightArrow = document.querySelector('.arrow-right');
+
+leftArrow.addEventListener('click', function() {
+  currentImage--;
+  if (currentImage < 0) {
+    currentImage = images.length - 1;
+  }
+  updateCarousel();
+});
+
+rightArrow.addEventListener('click', function() {
+  currentImage++;
+  if (currentImage >= images.length) {
+    currentImage = 0;
+  }
+  updateCarousel();
+});
+
 let xDown = null;
 let yDown = null;
 
@@ -122,6 +141,7 @@ function updateCarousel() {
 }
 updateCarousel()
 </script>
+
 
   </body>
 </html>
