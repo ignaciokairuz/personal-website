@@ -43,6 +43,95 @@
 						<h5>Left &amp; Right</h5>
 						<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
 						<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+<div class="carousel">
+  <div class="carousel-item">
+    <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="Image 1">
+  </div>
+  <div class="carousel-item">
+    <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="Image 2">
+  </div>
+  <div class="carousel-item">
+    <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 3">
+  </div>
+</div>
+    
+<style>
+.carousel {
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-item {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carousel-item img {
+  width: auto;
+  height: auto;
+  object-fit: cover;
+}
+</style>
+
+    
+
+<script>
+var carousel = document.querySelector(".carousel");
+var items = document.querySelectorAll(".carousel-item");
+var currentItem = 0;
+var isEnabled = true;
+
+function changeCurrentItem(n) {
+  currentItem = (n + items.length) % items.length;
+}
+
+function hideItem(direction) {
+  isEnabled = false;
+  items[currentItem].classList.add(direction);
+  items[currentItem].addEventListener("animationend", function() {
+    this.classList.remove("active", direction);
+  });
+}
+
+function showItem(direction) {
+  items[currentItem].classList.add("next", direction);
+  items[currentItem].addEventListener("animationend", function() {
+    this.classList.remove("next", direction);
+    this.classList.add("active");
+    isEnabled = true;
+  });
+}
+
+function nextItem(n) {
+  hideItem("to-left");
+  changeCurrentItem(n + 1);
+  showItem("from-right");
+}
+
+function previousItem(n) {
+  hideItem("to-right");
+  changeCurrentItem(n - 1);
+  showItem("from-left");
+}
+
+document.querySelector(".control.left").addEventListener("click", function() {
+  if (isEnabled) {
+    previousItem(currentItem);
+  }
+});
+
+document.querySelector(".control.right").addEventListener("click", function() {
+  if (isEnabled) {
+    nextItem(currentItem);
+  }
+});
+
+</script>
 					</section>
 
 
