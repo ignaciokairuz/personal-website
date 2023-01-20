@@ -72,7 +72,11 @@
 </style>
 <script>
 
- carousel.addEventListener("touchstart", handleTouchStart);
+const carousel = document.getElementById("carousel");
+const images = carousel.getElementsByTagName("img");
+let currentImage = 0;
+
+carousel.addEventListener("touchstart", handleTouchStart);
 carousel.addEventListener("touchend", handleTouchEnd);
 
 let xDown = null;
@@ -96,12 +100,19 @@ function handleTouchEnd(event) {
 
   if (Math.abs(xDiff) > Math.abs(yDiff)) {
     if (xDiff > 0) {
-      rightArrow.click();
+      currentImage++;
+      if (currentImage >= images.length) {
+        currentImage = 0;
+      }
+      updateCarousel();
     } else {
-      leftArrow.click();
+      currentImage--;
+      if (currentImage < 0) {
+        currentImage = images.length - 1;
+      }
+      updateCarousel();
     }
   }
-
   xDown = null;
   yDown = null;
 }
