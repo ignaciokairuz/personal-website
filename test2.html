@@ -1,97 +1,100 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  </head>
-  <body>
-<div class="carousel">
-  <div class="carousel-item">
-    <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="Image 1">
-  </div>
-  <div class="carousel-item">
-    <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="Image 2">
-  </div>
-  <div class="carousel-item">
-    <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 3">
-  </div>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<div id="carousel">
+  <div class="arrow arrow-left"></div>
+  <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="image 1">
+  <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="image 2">
+  <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="image 3">
+  <div class="arrow arrow-right"></div>
 </div>
-    
+
+
 <style>
-.carousel {
-  width: auto;
-  height: auto;
-  overflow: hidden;
+#carousel {
+  width: 100%;
+  height: 100%;
   position: relative;
 }
 
-.carousel-item {
-  width: auto;
-  height: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.carousel-item img {
-  width: auto;
-  height: auto;
+#carousel img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
+
+.arrow {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  opacity: 1;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.arrow::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.arrow-left::before {
+  transform: rotate(135deg) translate(-50%, -50%);
+}
+
+.arrow-right::before {
+  transform: rotate(-45deg) translate(-50%, -50%);
+}
+
+
 </style>
-
-    
-
 <script>
-var carousel = document.querySelector(".carousel");
-var items = document.querySelectorAll(".carousel-item");
-var currentItem = 0;
-var isEnabled = true;
+const carousel = document.getElementById("carousel");
+const images = carousel.getElementsByTagName("img");
+let currentImage = 0;
 
-function changeCurrentItem(n) {
-  currentItem = (n + items.length) % items.length;
-}
-
-function hideItem(direction) {
-  isEnabled = false;
-  items[currentItem].classList.add(direction);
-  items[currentItem].addEventListener("animationend", function() {
-    this.classList.remove("active", direction);
-  });
-}
-
-function showItem(direction) {
-  items[currentItem].classList.add("next", direction);
-  items[currentItem].addEventListener("animationend", function() {
-    this.classList.remove("next", direction);
-    this.classList.add("active");
-    isEnabled = true;
-  });
-}
-
-function nextItem(n) {
-  hideItem("to-left");
-  changeCurrentItem(n + 1);
-  showItem("from-right");
-}
-
-function previousItem(n) {
-  hideItem("to-right");
-  changeCurrentItem(n - 1);
-  showItem("from-left");
-}
-
-document.querySelector(".control.left").addEventListener("click", function() {
-  if (isEnabled) {
-    previousItem(currentItem);
+const leftArrow = carousel.getElementsByClassName("arrow-left")[0];
+leftArrow.addEventListener("click", () => {
+  currentImage--;
+  if (currentImage < 0) {
+    currentImage = images.length - 1;
   }
+  updateCarousel();
 });
 
-document.querySelector(".control.right").addEventListener("click", function() {
-  if (isEnabled) {
-    nextItem(currentItem);
+const rightArrow = carousel.getElementsByClassName("arrow-right")[0];
+rightArrow.addEventListener("click", () => {
+  currentImage++;
+  if (currentImage >= images.length) {
+    currentImage = 0;
   }
+  updateCarousel();
 });
+
+function updateCarousel() {
+  for (let i = 0; i < images.length; i++) {
+    images[i].style.display = "none";
+  }
+  images[currentImage].style.display = "block";
+}
+
+updateCarousel();
 
 </script>
-
-  </body>
+  
+  
+</body>
 </html>
