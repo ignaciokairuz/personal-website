@@ -71,37 +71,42 @@
 
 </style>
 <script>
-const carousel = document.getElementById("carousel");
-const images = carousel.getElementsByTagName("img");
-let currentImage = 0;
 
-const leftArrow = carousel.getElementsByClassName("arrow-left")[0];
-leftArrow.addEventListener("click", () => {
-  currentImage--;
-  if (currentImage < 0) {
-    currentImage = images.length - 1;
-  }
-  updateCarousel();
-});
+ carousel.addEventListener("touchstart", handleTouchStart);
+carousel.addEventListener("touchend", handleTouchEnd);
 
-const rightArrow = carousel.getElementsByClassName("arrow-right")[0];
-rightArrow.addEventListener("click", () => {
-  currentImage++;
-  if (currentImage >= images.length) {
-    currentImage = 0;
-  }
-  updateCarousel();
-});
+let xDown = null;
+let yDown = null;
 
-function updateCarousel() {
-  for (let i = 0; i < images.length; i++) {
-    images[i].style.display = "none";
-  }
-  images[currentImage].style.display = "block";
+function handleTouchStart(event) {
+  xDown = event.touches[0].clientX;
+  yDown = event.touches[0].clientY;
 }
 
-updateCarousel();
+function handleTouchEnd(event) {
+  if (!xDown || !yDown) {
+    return;
+  }
 
+  const xUp = event.changedTouches[0].clientX;
+  const yUp = event.changedTouches[0].clientY;
+
+  const xDiff = xDown - xUp;
+  const yDiff = yDown - yUp;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      rightArrow.click();
+    } else {
+      leftArrow.click();
+    }
+  }
+
+  xDown = null;
+  yDown = null;
+}
+
+  
 </script>
   
   
