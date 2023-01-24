@@ -3309,6 +3309,12 @@ readers do not read off random characters that represent icons */
 .fa-robot:before {
   content: "\f544"; }
 
+.fa-user-robot:before {
+  content: "\e04b"; }
+
+.fa-person-digging:before {
+  content: "\f85e"; }
+
 .fa-rocket:before {
   content: "\f135"; }
 
