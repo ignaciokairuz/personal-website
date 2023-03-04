@@ -18,7 +18,8 @@
 </div>
 <style>
 .carousel {
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   margin: auto;
   position: relative;
 }
@@ -28,8 +29,7 @@
 }
 
 .carousel-item {
-  width: 600px;
-  height: 400px;
+  width: 100%;
 }
 
 .carousel-item img {
@@ -49,31 +49,48 @@
 .next {
   position: absolute;
   top: calc(50% - 25px);
+  
+// use border properties to create arrow shapes
+border-style:solid; 
+border-width:0px; 
+border-color:black; 
+width:0px; 
+height:0px; 
 }
 
 .prev {
-  left: -50px;
+// left arrow
+left:-50px; 
+border-right-width:50px; 
+border-top-width:25px; 
+border-bottom-width:25px; 
+
+// add a hover effect
+:hover { border-right-color:red;} 
 }
 
 .next {
-  right: -50px;
+// right arrow
+right:-50px; 
+border-left-width:50px; 
+border-top-width:25px; 
+border-bottom-width:25px;
+
+// add a hover effect
+:hover { border-left-color:red;}  
 }
 </style>
 <script>
-let index = 0;
+let index =0;
 
 const prev = document.querySelector(".prev");
 const next = document.querySelector(".next");
 const items = document.querySelectorAll(".carousel-item");
 
 function showItem(n) {
-  
+
 // loop back to the first item if n is out of range
-if (n > items.length -1) { 
-index =0; 
-} else if (n<0) { 
-index=items.length-1; 
-} 
+if (n > items.length -1) { index =0;} else if (n<0) { index=items.length-1;}
 
 // hide all items and show the one with the current index
 items.forEach(item => item.classList.remove("active"));
@@ -89,6 +106,35 @@ showItem(index);
 next.addEventListener("click", function() {
 index++;
 showItem(index);
+});
+
+// add touch event listeners to the carousel inner element
+
+const inner = document.querySelector(".carousel-inner");
+
+let startX =0;
+
+inner.addEventListener("touchstart", function(e) {
+
+// get the x coordinate of the touch point when it starts
+startX = e.touches[0].clientX;
+});
+
+inner.addEventListener("touchend", function(e) {
+
+// get the x coordinate of the touch point when it ends
+let endX = e.changedTouches[0].clientX;
+
+// calculate the difference between start and end points
+let diffX = endX - startX;
+
+// if diffX is positive, it means a swipe from left to right, so show previous item
+
+if (diffX >0) { index--; showItem(index);}
+
+// if diffX is negative, it means a swipe from right to left, so show next item
+
+else if (diffX <0) { index++; showItem(index);}
 });
 </script>
 </body>
