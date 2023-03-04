@@ -88,12 +88,28 @@
   display: none;
 }
   
+.prev,
+.next {
+  position: absolute;
+  top: calc(50% - 25px);
+  
+// use border properties to create v shapes
+border-style:solid; 
+border-width:0px; 
+border-color:black; 
+width:0px; 
+height:0px; 
+}
+
 .prev {
 // left arrow
-left:-50px; 
-border-right-width:40px; // smaller width
-border-top-width:20px; // smaller height
-border-bottom-width:20px; // smaller height
+left:0px; // align with the left edge of the image
+border-right-width:50px; 
+border-top-width:25px; 
+border-bottom-width:25px;
+
+// rotate and move the v shape to make it an arrow
+transform:rotate(45deg) translate(-50%, -50%);
 
 // add a hover effect
 :hover { border-right-color:red;} 
@@ -101,10 +117,13 @@ border-bottom-width:20px; // smaller height
 
 .next {
 // right arrow
-right:-50px; 
-border-left-width:40px; // smaller width
-border-top-width:20px; // smaller height
-border-bottom-width:20px; // smaller height
+right:0px; // align with the right edge of the image
+border-left-width:50px; 
+border-top-width:25px; 
+border-bottom-width:25px;
+
+// rotate and move the v shape to make it an arrow
+transform:rotate(-45deg) translate(50%, -50%);
 
 // add a hover effect
 :hover { border-left-color:red;}  
