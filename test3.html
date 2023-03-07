@@ -125,95 +125,63 @@ button {
 }
 </style>						
 <script>
-// Selecting the necessary elements
-const carousel = document.querySelector('.carousel');
-const slides = carousel.querySelector('.slides');
-const prevButton = carousel.querySelector('#prev');
-const nextButton = carousel.querySelector('#next');
+const carousel = document.querySelector(".carousel");
+const slides = carousel.querySelector(".slides");
+const slide = carousel.querySelectorAll(".slide");
 
-// Setting the initial slide to 1
-let currentSlide = 1;
+// Set up initial variables
+let currentSlide = 0;
+let startX, endX;
 
-// Function to move the slides
-function moveToSlide(slideNumber) {
-// Updating the current slide
-currentSlide = slideNumber;
+// Set up event listeners for swiping on smartphones
+slides.addEventListener("touchstart", handleTouchStart);
+slides.addEventListener("touchend", handleTouchEnd);
 
-// Moving the slides using transform property
-slides.style.transform = translateX(-${(currentSlide - 1) * 100}%);
+function handleTouchStart(event) {
+  startX = event.changedTouches[0].screenX;
 }
 
-// Adding event listeners to previous and next buttons
-prevButton.addEventListener('click', () => {
-// If it's the first slide, move to the last slide
-if (currentSlide === 1) {
-moveToSlide(3);
-} else {
-// Otherwise, move to the previous slide
-moveToSlide(currentSlide - 1);
-}
-});
-
-nextButton.addEventListener('click', () => {
-// If it's the last slide, move to the first slide
-if (currentSlide === 3) {
-moveToSlide(1);
-} else {
-// Otherwise, move to the next slide
-moveToSlide(currentSlide + 1);
-}
-});
-
-// Adding touch events for swipe functionality on smartphones
-let touchStartX;
-let touchEndX;
-
-carousel.addEventListener('touchstart', (event) => {
-touchStartX = event.touches[0].clientX;
-});
-
-carousel.addEventListener('touchend', (event) => {
-touchEndX = event.changedTouches[0].clientX;
-
-// Checking if the swipe was horizontal
-if (touchEndX - touchStartX > 50) {
-// If it's the first slide, move to the last slide
-if (currentSlide === 1) {
-moveToSlide(3);
-} else {
-// Otherwise, move to the previous slide
-moveToSlide(currentSlide - 1);
-}
-} else if (touchEndX - touchStartX < -50) {
-// If it's the last slide, move to the first slide
-if (currentSlide === 3) {
-moveToSlide(1);
-} else {
-// Otherwise, move to the next slide
-moveToSlide(currentSlide + 1);
-}
-}
-});
-
-// Making the carousel responsive
-function handleResize() {
-// Getting the width of the carousel container
-const carouselWidth = carousel.clientWidth;
-
-// Setting the width of each slide based on the container width
-slides.style.width = ${carouselWidth * 3}px;
-slides.querySelectorAll('.slide').forEach((slide) => {
-slide.style.width = ${carouselWidth}px;
-});
-
-// Moving to the current slide to adjust for resize
-moveToSlide(currentSlide);
+function handleTouchEnd(event) {
+  endX = event.changedTouches[0].screenX;
+  if (startX - endX > 50) {
+    showNextSlide();
+  } else if (endX - startX > 50) {
+    showPrevSlide();
+  }
 }
 
-window.addEventListener('resize', handleResize);
+// Set up event listeners for clicking on buttons
+document.querySelector("#prev").addEventListener("click", showPrevSlide);
+document.querySelector("#next").addEventListener("click", showNextSlide);
 
-// Calling handleResize initially to set the slide widths
-handleResize();
+// Set up function to show previous slide
+function showPrevSlide() {
+  if (currentSlide === 0) {
+    currentSlide = slide.length - 1;
+  } else {
+    currentSlide--;
+  }
+  updateSlidePosition();
+}
+
+// Set up function to show next slide
+function showNextSlide() {
+  if (currentSlide === slide.length - 1) {
+    currentSlide = 0;
+  } else {
+    currentSlide++;
+  }
+  updateSlidePosition();
+}
+
+// Set up function to update slide position
+function updateSlidePosition() {
+  slides.style.transform = `translateX(-${currentSlide * slide[0].offsetWidth}px)`;
+}
+
+// Set up event listener to update slide position on window resize
+window.addEventListener("resize", updateSlidePosition);
+
 </script>
 						<!--<ul class="actions">
 							<li><a href="mercado_libre/meli.html" class="button">Learn More</a></li>
