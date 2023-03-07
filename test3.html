@@ -129,26 +129,8 @@ const carousel = document.querySelector(".carousel");
 const slides = carousel.querySelector(".slides");
 const slide = carousel.querySelectorAll(".slide");
 
-// Set up initial variables
+// Set up initial variable
 let currentSlide = 0;
-let startX, endX;
-
-// Set up event listeners for swiping on smartphones
-slides.addEventListener("touchstart", handleTouchStart);
-slides.addEventListener("touchend", handleTouchEnd);
-
-function handleTouchStart(event) {
-  startX = event.changedTouches[0].screenX;
-}
-
-function handleTouchEnd(event) {
-  endX = event.changedTouches[0].screenX;
-  if (startX - endX > 50) {
-    showNextSlide();
-  } else if (endX - startX > 50) {
-    showPrevSlide();
-  }
-}
 
 // Set up event listeners for clicking on buttons
 document.querySelector("#prev").addEventListener("click", showPrevSlide);
