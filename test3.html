@@ -60,73 +60,52 @@
   <button class="next">Next</button>
 </div>
 <style>
-.carousel {
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
-  position: relative;
-}
+  .carousel {
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+  }
 
-.carousel-inner {
-  overflow: hidden;
-}
+  .carousel-inner {
+    overflow: hidden;
+  }
 
-.carousel-item {
-  width: 100%;
-}
+  .carousel-item {
+    width: 100%;
+  }
 
-.carousel-item img {
-  width: 100%;
-  height: auto;
-}
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+  }
 
-.active {
-  display: block;
-}
+  .active {
+    display: block;
+  }
 
 .carousel-item:not(.active) {
-  display: none;
+display:none;
 }
   
 .prev,
 .next {
-  position: absolute;
-  top: calc(50% - 25px);
-  
-// use border properties to create v shapes
+position:absolute;
+top:calc(50% -25px);
+}
+
+.prev{
+left:-50px; 
 border-style:solid; 
-border-width:0px; 
-border-color:black; 
-width:0px; 
-height:0px; 
+border-width:25px; 
+border-color:black transparent transparent black; 
 }
 
-.prev {
-// left arrow
-left:0px; // align with the left edge of the image
-border-right-width:50px; 
-border-top-width:25px; 
-border-bottom-width:25px;
-
-// rotate and move the v shape to make it an arrow
-transform:rotate(45deg) translate(-50%, -50%);
-
-// add a hover effect
-:hover { border-right-color:red;} 
-}
-
-.next {
-// right arrow
-right:0px; // align with the right edge of the image
-border-left-width:50px; 
-border-top-width:25px; 
-border-bottom-width:25px;
-
-// rotate and move the v shape to make it an arrow
-transform:rotate(-45deg) translate(50%, -50%);
-
-// add a hover effect
-:hover { border-left-color:red;}  
+.next{
+right:-50px; 
+border-style:solid; 
+border-width:25px; 
+border-color:black black transparent transparent; 
 }
 </style>
 <script>
