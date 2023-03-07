@@ -50,56 +50,102 @@
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="Image 2"></div>
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 3"></div>
   </div>
-  <button id="prev"></button>
-  <button id="next"></button>
-</div>
+  <button id="prev">
+    <!-- SVG code for left arrow -->
+    <svg height="50" width="50" viewBox="-10 -10 120 120">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7"
+        refX="-5" refY="-3.5" orient="-90">
+          <polygon points="-5 -7, -5 7, -15 0" fill="#fff"/>
+        </marker>
+      </defs>
+      <path d="-5 -5 L95 -5 L95 95 L-5 95"
+        stroke="#fff"
+        stroke-width="10"
+        fill-opacity="0"
+        marker-start="url(#arrowhead)"/>
+    </svg>
+  </button>
+  <button id="next">
+    <!-- SVG code for right arrow -->
+    <svg height="50" width="50" viewBox="-10 -10 120 120">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7"
+        refX="-5" refY="-3.5" orient="+90">
+          <polygon points="-15 -7, -15 7, -25 0" fill="#fff"/>
+        </marker>
+      </defs>
+      <path d="-5 -5 L95 -5 L95 95 L-5 95"
+        stroke="#fff"
+        stroke-width="10"
+        fill-opacity= "0"
+        marker-end= "url(#arrowhead)"/>
+    </svg>  
+</button>  
+</div>  
 <style>
 .carousel {
-  width: 80%;
-  margin: auto;
+   width:80%;
+   margin:auto;
+   position:relative;
 }
 
 .slides {
-  display: flex;
-  overflow-x: hidden;
+   display:flex;
+   overflow-x:hidden;
+   transition:transform .4s ease-in-out;
 }
 
 .slide {
-  flex: none;
-  width: 100%;
+   flex:none;
+   width:100%;
 }
 
 img {
-  max-width: 100%;
+   max-width:100%;
 }
 
 button {
-  position: absolute;
+   position:absolute;
+   top:50%;
+   transform:translateY(-50%);
+}
+
+#prev {
+   left:0;
+}
+
+#next {
+   right:0;
 }
 </style>						
 <script>
 let slides = document.querySelectorAll(".slide");
-let index = 0;
+let index =0;
 
 function showSlide(n) {
-   // Hide all slides
-   for (let slide of slides) {
-      slide.style.display = "none";
-   }
-   // Show the nth slide
-   slides[n].style.display = "block";
+ // Hide all slides
+ for (let slide of slides) {
+     slide.style.display = "none";
+ }
+ // Show the nth slide
+ slides[n].style.display = "block";
 }
 
 function nextSlide() {
-   index++;
-   if (index >= slides.length) index = 0; // Loop back to first slide
-   showSlide(index);
+ index++;
+ if (index >= slides.length) index =0; // Loop back to first slide
+ showSlide(index);
+ // Move the slides container to the left by its width
+ document.querySelector(".slides").style.transform = `translateX(-${index *100}%)`;
 }
 
 function prevSlide() {
-   index--;
-   if (index < 0) index = slides.length -1; // Loop back to last slide
-   showSlide(index);
+ index--;
+ if (index<0) index =slides.length-1; // Loop back to last slide
+ showSlide(index);
+ // Move the slides container to the right by its width
+ document.querySelector(".slides").style.transform = `translateX(-${index *100}%)`;
 }
 
 // Add event listeners for buttons
