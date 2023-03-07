@@ -45,129 +45,69 @@
 						</header>
 
 <div class="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-       <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="image 1">
-    </div>
-    <div class="carousel-item">
-       <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="image 1">
-    </div>
-    <div class="carousel-item">
-       <img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="image 1">
-    </div>
+  <div class="slides">
+    <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="Image 1"></div>
+    <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="Image 2"></div>
+    <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 3"></div>
   </div>
-  <button class="prev"></button>
-  <button class="next"></button>
+  <button id="prev"></button>
+  <button id="next"></button>
 </div>
 <style>
-  .carousel {
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    position: relative;
-  }
-
-  .carousel-inner {
-    overflow: hidden;
-  }
-
-  .carousel-item {
-    width: 100%;
-  }
-
-.carousel-item img {
-width:100%;
-height:auto;
+.carousel {
+  width: 80%;
+  margin: auto;
 }
 
-.active {
-display:block;
+.slides {
+  display: flex;
+  overflow-x: hidden;
 }
 
-.carousel-item:not(.active) {
-display:none;
-}
-  
-.prev,
-.next {
-position:absolute;
-top:calc(50% -25px);
+.slide {
+  flex: none;
+  width: 100%;
 }
 
-.prev{
-left:-50px; 
-border-style:solid; 
-border-width:2px; 
-border-color:black transparent transparent black; 
-transform-origin:center center;
-transform:rotate(-25deg);
+img {
+  max-width: 100%;
 }
 
-.next{
-right:-50px; 
-border-style:solid; 
-border-width:3px; 
-border-color:black black transparent transparent; 
-transform-origin:center center;
-transform:rotate(25deg);
+button {
+  position: absolute;
 }
 </style>						
 <script>
-let index =0;
+let slides = document.querySelectorAll(".slide");
+let index = 0;
 
-const prev = document.querySelector(".prev");
-const next = document.querySelector(".next");
-const items = document.querySelectorAll(".carousel-item");
-
-function showItem(n) {
-
-// loop back to the first item if n is out of range
-if (n > items.length -1) { index =0;} else if (n<0) { index=items.length-1;}
-
-// hide all items and show the one with the current index
-items.forEach(item => item.classList.remove("active"));
-items[index].classList.add("active");
+function showSlide(n) {
+   // Hide all slides
+   for (let slide of slides) {
+      slide.style.display = "none";
+   }
+   // Show the nth slide
+   slides[n].style.display = "block";
 }
 
-// add event listeners to the buttons
-prev.addEventListener("click", function() {
-index--;
-showItem(index);
-});
+function nextSlide() {
+   index++;
+   if (index >= slides.length) index = 0; // Loop back to first slide
+   showSlide(index);
+}
 
-next.addEventListener("click", function() {
-index++;
-showItem(index);
-});
+function prevSlide() {
+   index--;
+   if (index < 0) index = slides.length -1; // Loop back to last slide
+   showSlide(index);
+}
 
-// add touch event listeners to the carousel inner element
+// Add event listeners for buttons
+document.getElementById("next").addEventListener("click", nextSlide);
+document.getElementById("prev").addEventListener("click", prevSlide);
 
-const inner = document.querySelector(".carousel-inner");
-
-let startX =0;
-
-inner.addEventListener("touchstart", function(e) {
-
-// get the x coordinate of the touch point when it starts
-startX = e.touches[0].clientX;
-});
-
-inner.addEventListener("touchend", function(e) {
-
-// get the x coordinate of the touch point when it ends
-let endX = e.changedTouches[0].clientX;
-
-// calculate the difference between start and end points
-let diffX = endX - startX;
-
-// if diffX is positive, it means a swipe from left to right, so show previous item
-
-if (diffX >0) { index--; showItem(index);}
-
-// if diffX is negative, it means a swipe from right to left, so show next item
-
-else if (diffX <0) { index++; showItem(index);}
-});
+// Show the first slide initially
+showSlide(index);
 </script>
 						<!--<ul class="actions">
 							<li><a href="mercado_libre/meli.html" class="button">Learn More</a></li>
