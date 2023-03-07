@@ -49,8 +49,7 @@
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="Image 1"></div>
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="Image 2"></div>
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 3"></div>
-  </div>
-  <button id="prev">
+  </div>  <button id="prev">
     <!-- SVG code for left arrow -->
     <svg height="50" width="50" viewBox="-10 -10 120 120">
       <defs>
@@ -62,26 +61,32 @@
       <path d="-5 -5 L95 -5 L95 95 L-5 95"
         stroke="#fff"
         stroke-width="10"
-        fill-opacity="0"
-        marker-start="url(#arrowhead)"/>
-    </svg>
-  </button>
-  <button id="next">
+        fill-opacity= "0"
+        marker-start= "url(#arrowhead)">
+        <!-- Add animate element to change stroke-dashoffset -->
+        <animate attributeName= "stroke-dashoffset" from= "0" to= "-380" dur= "1s" repeatCount= "indefinite"/>
+      </path>
+    </svg>  
+</button>  
+<button id= "next">
     <!-- SVG code for right arrow -->
-    <svg height="50" width="50" viewBox="-10 -10 120 120">
+    <svg height= "50" width= "50" viewBox= "-10 -10 120 120">
       <defs>
-        <marker id="arrowhead" markerWidth="10" markerHeight="7"
-        refX="-5" refY="-3.5" orient="+90">
+        <marker id= "arrowhead" markerWidth= "10" markerHeight= "7"
+        refX= "-5" refY= "-3.5" orient="+90">
           <polygon points="-15 -7, -15 7, -25 0" fill="#fff"/>
         </marker>
       </defs>
       <path d="-5 -5 L95 -5 L95 95 L-5 95"
         stroke="#fff"
         stroke-width="10"
-        fill-opacity= "0"
-        marker-end= "url(#arrowhead)"/>
-    </svg>  
-</button>  
+        fill-opacity = "0"
+        marker-end = "url(#arrowhead)">
+         <!-- Add animate element to change stroke-dashoffset -->
+         <animate attributeName = "stroke-dashoffset" from = "-380" to = "0"dur = "1s""repeatCount = ""indefinite"/>
+       </path>
+     </svg>  
+   </button>  
 </div>  
 <style>
 .carousel {
@@ -120,40 +125,58 @@ button {
 }
 </style>						
 <script>
-let slides = document.querySelectorAll(".slide");
-let index =0;
+// Get the carousel element
+var carousel = document.querySelector(".carousel");
+// Get the slides element
+var slides = document.querySelector(".slides");
+// Get the slide elements
+var slide = document.querySelectorAll(".slide");
+// Get the width of one slide
+var slideWidth = slide[0].offsetWidth;
+// Get the number of slides
+var slideCount = slide.length;
+// Set the initial index of the current slide
+var currentIndex = 0;
+// Set a variable to store the starting position of a touch event
+var startX = 0;
 
-function showSlide(n) {
- // Hide all slides
- for (let slide of slides) {
-     slide.style.display = "none";
- }
- // Show the nth slide
- slides[n].style.display = "block";
-}
+// Add a touchstart event listener to the carousel element
+carousel.addEventListener("touchstart", function(event) {
+  // Get the first touch object from the event
+  var touch = event.touches[0];
+  // Store its clientX property as the starting position
+  startX = touch.clientX;
+});
 
-function nextSlide() {
- index++;
- if (index >= slides.length) index =0; // Loop back to first slide
- showSlide(index);
- // Move the slides container to the left by its width
- document.querySelector(".slides").style.transform = `translateX(-${index *100}%)`;
-}
+// Add a touchmove event listener to the carousel element
+carousel.addEventListener("touchmove", function(event) {
+  // Prevent scrolling while swiping
+  event.preventDefault();
+  // Get the first touch object from the event
+  var touch = event.touches[0];
+  // Calculate the difference between its current clientX property and the starting position
+  var diffX = startX - touch.clientX;
+  // Calculate how much to translate the slides element based on the difference and the current index
+  var translateX = -currentIndex * slideWidth - diffX;
+  // Apply a CSS transform style to translate the slides element horizontally by that amount
+  slides.style.transform = "translateX(" + translateX + "px)";
+});
 
-function prevSlide() {
- index--;
- if (index<0) index =slides.length-1; // Loop back to last slide
- showSlide(index);
- // Move the slides container to the right by its width
- document.querySelector(".slides").style.transform = `translateX(-${index *100}%)`;
-}
-
-// Add event listeners for buttons
-document.getElementById("next").addEventListener("click", nextSlide);
-document.getElementById("prev").addEventListener("click", prevSlide);
-
-// Show the first slide initially
-showSlide(index);
+// Add a touchend event listener to the carousel element
+carousel.addEventListener("touchend", function(event) {
+  // Get how much was translated by getting rid of "translateX(" and "px)" from transform style value 
+   var translatedX = parseInt(slides.style.transform.replace(/translateX\(|px\)/g,""));
+   // Calculate how many slides were swiped based on translated amount and width of one slide 
+   var swipedSlides = Math.round(translatedX / slideWidth);
+   // Update current index by subtracting swiped slides from it 
+   currentIndex -= swipedSlides;
+   // Make sure current index is within bounds (0 and slideCount -1) 
+   currentIndex = Math.max(0, Math.min(currentIndex, slideCount -1));
+   // Reset translated amount by multiplying current index and width of one slide 
+   translatedX = -currentIndex * slideWidth;
+   // Apply a CSS transform style to translate back slides element horizontally by reset amount 
+   slides.style.transform ="translateX("+translatedX+"px)";
+});
 </script>
 						<!--<ul class="actions">
 							<li><a href="mercado_libre/meli.html" class="button">Learn More</a></li>
