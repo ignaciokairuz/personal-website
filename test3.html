@@ -125,52 +125,27 @@ button {
 }
 </style>						
 <script>
-// Get the carousel element
-var carousel = document.querySelector(".carousel");
-// Get the slides element
-var slides = document.querySelector(".slides");
-// Get the slide elements
-var slide = document.querySelectorAll(".slide");
-// Get the width of one slide
-var slideWidth = slide[0].offsetWidth;
-// Get the number of slides
-var slideCount = slide.length;
-// Set the initial index of the current slide
-var currentIndex = 0;
-// Set a variable to store the starting position of a touch event
-var startX = 0;
+// Get the prev and next buttons
+var prev = document.querySelector("#prev");
+var next = document.querySelector("#next");
 
-// Add a touchstart event listener to the carousel element
-carousel.addEventListener("touchstart", function(event) {
-  // Get the first touch object from the event
-  var touch = event.touches[0];
-  // Store its clientX property as the starting position
-  startX = touch.clientX;
+// Add a click event listener to the prev button
+prev.addEventListener("click", function() {
+  // Decrease current index by one
+  currentIndex--;
+  // Make sure current index is within bounds (0 and slideCount -1) 
+  currentIndex = Math.max(0, Math.min(currentIndex, slideCount -1));
+  // Reset translated amount by multiplying current index and width of one slide 
+  translatedX = -currentIndex * slideWidth;
+  // Apply a CSS transform style to translate back slides element horizontally by reset amount 
+  slides.style.transform ="translateX("+translatedX+"px)";
 });
 
-// Add a touchmove event listener to the carousel element
-carousel.addEventListener("touchmove", function(event) {
-  // Prevent scrolling while swiping
-  event.preventDefault();
-  // Get the first touch object from the event
-  var touch = event.touches[0];
-  // Calculate the difference between its current clientX property and the starting position
-  var diffX = startX - touch.clientX;
-  // Calculate how much to translate the slides element based on the difference and the current index
-  var translateX = -currentIndex * slideWidth - diffX;
-  // Apply a CSS transform style to translate the slides element horizontally by that amount
-  slides.style.transform = "translateX(" + translateX + "px)";
-});
-
-// Add a touchend event listener to the carousel element
-carousel.addEventListener("touchend", function(event) {
-  // Get how much was translated by getting rid of "translateX(" and "px)" from transform style value 
-   var translatedX = parseInt(slides.style.transform.replace(/translateX\(|px\)/g,""));
-   // Calculate how many slides were swiped based on translated amount and width of one slide 
-   var swipedSlides = Math.round(translatedX / slideWidth);
-   // Update current index by subtracting swiped slides from it 
-   currentIndex -= swipedSlides;
-   // Make sure current index is within bounds (0 and slideCount -1) 
+// Add a click event listener to the next button
+next.addEventListener("click", function() {
+  // Increase current index by one
+  currentIndex++;
+  // Make sure current index is within bounds (0 and slideCount -1) 
    currentIndex = Math.max(0, Math.min(currentIndex, slideCount -1));
    // Reset translated amount by multiplying current index and width of one slide 
    translatedX = -currentIndex * slideWidth;
