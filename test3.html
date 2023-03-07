@@ -65,18 +65,33 @@
   max-width: 600px;
   margin: auto;
   position: relative;
-  
-  // add these lines to make the carousel a flex container
-  display: flex;
-  align-items: center;
 }
 
+.carousel-inner {
+  overflow: hidden;
+}
+
+.carousel-item {
+  width: 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+}
+
+.active {
+  display: block;
+}
+
+.carousel-item:not(.active) {
+  display: none;
+}
+  
 .prev,
 .next {
   position: absolute;
-  
-// remove this line as it is not needed anymore
-// top: calc(50% - 25px);
+  top: calc(50% - 25px);
   
 // use border properties to create v shapes
 border-style:solid; 
