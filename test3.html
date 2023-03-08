@@ -49,7 +49,8 @@
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="Image 1"></div>
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="Image 2"></div>
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 3"></div>
-  </div>  <button id="prev">
+  </div> 
+<button id="prev">
     <!-- SVG code for left arrow -->
     <svg height="50" width="50" viewBox="-10 -10 120 120">
       <defs>
@@ -132,8 +133,8 @@ let currentImage = 0;
 carousel.addEventListener("touchstart", handleTouchStart);
 carousel.addEventListener("touchend", handleTouchEnd);
 
-const leftArrow = document.querySelector('.arrow-left');
-const rightArrow = document.querySelector('.arrow-right');
+const leftArrow = document.querySelector('#prev');
+const rightArrow = document.querySelector('#next');
 
 leftArrow.addEventListener('click', function() {
   currentImage--;
