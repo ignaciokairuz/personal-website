@@ -193,10 +193,14 @@ function handleTouchEnd(evt) {
 
 function updateCarousel() {
   for (let i = 0; i < images.length; i++) {
-    images[i].style.display = "none";
+    if (i === currentImage) {
+      images[i].style.display = "block";
+    } else {
+      images[i].style.display = "none";
+    }
   }
-  images[currentImage].style.display = "block";
 }
+
 updateCarousel();
 </script>
 						<!--<ul class="actions">
