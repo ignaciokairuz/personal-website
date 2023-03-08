@@ -126,17 +126,17 @@ button {
 }
 </style>						
 <script>
-const carousel = document.getElementById("carousel");
-const images = carousel.getElementsByTagName("img");
+const carousel = document.querySelector('.carousel');
+const images = carousel.querySelectorAll('img');
 let currentImage = 0;
 
-carousel.addEventListener("touchstart", handleTouchStart);
-carousel.addEventListener("touchend", handleTouchEnd);
+carousel.addEventListener('touchstart', handleTouchStart);
+carousel.addEventListener('touchend', handleTouchEnd);
 
-const leftArrow = document.querySelector('#prev');
-const rightArrow = document.querySelector('#next');
+const prevButton = document.querySelector('#prev');
+const nextButton = document.querySelector('#next');
 
-leftArrow.addEventListener('click', function() {
+prevButton.addEventListener('click', function() {
   currentImage--;
   if (currentImage < 0) {
     currentImage = images.length - 1;
@@ -144,7 +144,7 @@ leftArrow.addEventListener('click', function() {
   updateCarousel();
 });
 
-rightArrow.addEventListener('click', function() {
+nextButton.addEventListener('click', function() {
   currentImage++;
   if (currentImage >= images.length) {
     currentImage = 0;
@@ -155,18 +155,19 @@ rightArrow.addEventListener('click', function() {
 let xDown = null;
 let yDown = null;
 
-function handleTouchStart(event) {
-  xDown = event.touches[0].clientX;
-  yDown = event.touches[0].clientY;
+function handleTouchStart(evt) {
+  const firstTouch = evt.touches[0];
+  xDown = firstTouch.clientX;
+  yDown = firstTouch.clientY;
 }
 
-function handleTouchEnd(event) {
+function handleTouchEnd(evt) {
   if (!xDown || !yDown) {
     return;
   }
 
-  const xUp = event.changedTouches[0].clientX;
-  const yUp = event.changedTouches[0].clientY;
+  const xUp = evt.changedTouches[0].clientX;
+  const yUp = evt.changedTouches[0].clientY;
 
   const xDiff = xDown - xUp;
   const yDiff = yDown - yUp;
@@ -196,7 +197,7 @@ function updateCarousel() {
   }
   images[currentImage].style.display = "block";
 }
-updateCarousel()
+updateCarousel();
 </script>
 						<!--<ul class="actions">
 							<li><a href="mercado_libre/meli.html" class="button">Learn More</a></li>
