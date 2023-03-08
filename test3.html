@@ -129,41 +129,72 @@ const carousel = document.querySelector(".carousel");
 const slides = carousel.querySelector(".slides");
 const slide = carousel.querySelectorAll(".slide");
 
-// Set up initial variable
 let currentSlide = 0;
+let isDragging = false;
+let startPos = 0;
+let currentTranslate = 0;
+let prevTranslate = 0;
 
-// Set up event listeners for clicking on buttons
-document.querySelector("#prev").addEventListener("click", showPrevSlide);
-document.querySelector("#next").addEventListener("click", showNextSlide);
-
-// Set up function to show previous slide
-function showPrevSlide() {
+const touchStart = (e) => {
+  currentSlide = Math.round(currentTranslate / -slide[0].offsetWidth);
   if (currentSlide === 0) {
     currentSlide = slide.length - 1;
   } else {
     currentSlide--;
   }
-  updateSlidePosition();
-}
+  startPos = e.touches[0].clientX;
+  isDragging = true;
+};
 
-// Set up function to show next slide
-function showNextSlide() {
-  if (currentSlide === slide.length - 1) {
-    currentSlide = 0;
-  } else {
+const touchMove = (e) => {
+  if (isDragging) {
+    const currentPosition = e.touches[0].clientX;
+    currentTranslate = prevTranslate + currentPosition - startPos;
+  }
+};
+
+const touchEnd = () => {
+  prevTranslate = currentTranslate;
+  const threshold = slide[0].offsetWidth / 4;
+  if (currentTranslate > 0) {
+    currentSlide--;
+  } else if (currentTranslate < -slide[0].offsetWidth) {
     currentSlide++;
+  } else if (Math.abs(currentTranslate - prevTranslate) > threshold) {
+    currentSlide += currentTranslate < prevTranslate ? 1 : -1;
+  }
+  currentSlide = (currentSlide + slide.length) % slide.length;
+  updateSlidePosition();
+  isDragging = false;
+};
+
+const updateSlidePosition = () => {
+  slides.style.transform = `translateX(-${currentSlide * slide[0].offsetWidth}px)`;
+};
+
+updateSlidePosition();
+
+slides.addEventListener("touchstart", touchStart);
+slides.addEventListener("touchmove", touchMove);
+slides.addEventListener("touchend", touchEnd);
+
+document.querySelector("#prev").addEventListener("click", () => {
+  currentSlide--;
+  if (currentSlide < 0) {
+    currentSlide = slide.length - 1;
   }
   updateSlidePosition();
-}
+});
 
-// Set up function to update slide position
-function updateSlidePosition() {
-  slides.style.transform = `translateX(-${currentSlide * slide[0].offsetWidth}px)`;
-}
+document.querySelector("#next").addEventListener("click", () => {
+  currentSlide++;
+  if (currentSlide > slide.length - 1) {
+    currentSlide = 0;
+  }
+  updateSlidePosition();
+});
 
-// Set up event listener to update slide position on window resize
 window.addEventListener("resize", updateSlidePosition);
-
 </script>
 						<!--<ul class="actions">
 							<li><a href="mercado_libre/meli.html" class="button">Learn More</a></li>
