@@ -44,13 +44,13 @@
 							</h2>
 						</header>
 
-<div class="carousel">
+<div id="carousel" class="carousel">
   <div class="slides">
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="Image 1"></div>
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="Image 2"></div>
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 3"></div>
-  </div> 
-<button id="prev">
+  </div>
+  <button id="prev" class="arrow-left">
     <!-- SVG code for left arrow -->
     <svg height="50" width="50" viewBox="-10 -10 120 120">
       <defs>
@@ -68,8 +68,8 @@
         <animate attributeName= "stroke-dashoffset" from= "0" to= "-380" dur= "1s" repeatCount= "indefinite"/>
       </path>
     </svg>  
-</button>  
-<button id= "next">
+  </button>
+  <button id="next" class="arrow-right">
     <!-- SVG code for right arrow -->
     <svg height= "50" width= "50" viewBox= "-10 -10 120 120">
       <defs>
@@ -84,11 +84,12 @@
         fill-opacity = "0"
         marker-end = "url(#arrowhead)">
          <!-- Add animate element to change stroke-dashoffset -->
-         <animate attributeName = "stroke-dashoffset" from = "-380" to = "0"dur = "1s""repeatCount = ""indefinite"/>
+         <animate attributeName = "stroke-dashoffset" from = "-380" to = "0" dur = "1s" repeatCount = "indefinite"/>
        </path>
      </svg>  
    </button>  
-</div>  
+</div>
+  
 <style>
 .carousel {
    width:80%;
@@ -126,15 +127,15 @@ button {
 }
 </style>						
 <script>
-const carousel = document.getElementById("carousel");
+const carousel = document.querySelector(".carousel");
 const images = carousel.getElementsByTagName("img");
 let currentImage = 0;
 
 carousel.addEventListener("touchstart", handleTouchStart);
 carousel.addEventListener("touchend", handleTouchEnd);
 
-const leftArrow = document.querySelector('.arrow-left');
-const rightArrow = document.querySelector('.arrow-right');
+const leftArrow = document.getElementById("prev");
+const rightArrow = document.getElementById("next");
 
 leftArrow.addEventListener('click', function() {
   currentImage--;
@@ -191,11 +192,10 @@ function handleTouchEnd(event) {
 }
 
 function updateCarousel() {
-  for (let i = 0; i < images.length; i++) {
-    images[i].style.display = "none";
-  }
-  images[currentImage].style.display = "block";
+  const slideWidth = images[0].clientWidth;
+  carousel.querySelector(".slides").style.transform = `translateX(-${currentImage * slideWidth}px)`;
 }
+
 updateCarousel()
 </script>
 						<!--<ul class="actions">
