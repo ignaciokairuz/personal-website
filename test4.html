@@ -106,7 +106,7 @@
 .slide {
   flex: none;
   width: 100%;
-  display: flex;
+  display: none; /* change this line */
   justify-content: center;
   align-items: center;
 }
@@ -199,9 +199,9 @@ function updateCarousel() {
   const slides = carousel.querySelectorAll(".slide");
   for (let i = 0; i < images.length; i++) {
     if (i === currentImage) {
-      slides[i].style.opacity = 1;
+      slides[i].style.display = "block"; /* change this line */
     } else {
-      slides[i].style.opacity = 0;
+      slides[i].style.display = "none"; /* change this line */
     }
   }
 }
