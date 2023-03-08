@@ -192,14 +192,18 @@ function handleTouchEnd(evt) {
 }
 
 function updateCarousel() {
-  for (let i = 0; i < images.length; i++) {
-    if (i === currentImage) {
-      images[i].style.display = 'block'; // display the active image
-    } else {
-      images[i].style.display = 'none'; // hide all other images
+  const images = document.querySelectorAll('.carousel-img');
+  const prevImageIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+  const nextImageIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+
+  images.forEach((img, index) => {
+    img.style.display = 'none';
+    if (index === currentIndex || index === prevImageIndex || index === nextImageIndex) {
+      img.style.display = 'block';
     }
-  }
+  });
 }
+
 
 
 
