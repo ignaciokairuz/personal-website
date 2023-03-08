@@ -124,86 +124,38 @@ button {
 #next {
    right:0;
 }
-</style>						
 <script>
-const carousel = document.querySelector('.carousel');
-const images = carousel.querySelectorAll('img');
-let currentImage = 0;
+let slideIndex = 0;
+showSlides();
 
-carousel.addEventListener('touchstart', handleTouchStart);
-carousel.addEventListener('touchend', handleTouchEnd);
-
-const prevButton = document.querySelector('#prev');
-const nextButton = document.querySelector('#next');
-
-prevButton.addEventListener('click', function() {
-  currentImage--;
-  if (currentImage < 0) {
-    currentImage = images.length - 1;
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
   }
-  updateCarousel();
-});
-
-nextButton.addEventListener('click', function() {
-  currentImage++;
-  if (currentImage >= images.length) {
-    currentImage = 0;
+  slideIndex++;
+  if (slideIndex > slides.length) {
+    slideIndex = 1
   }
-  updateCarousel();
-});
-
-let xDown = null;
-let yDown = null;
-
-function handleTouchStart(evt) {
-  const firstTouch = evt.touches[0];
-  xDown = firstTouch.clientX;
-  yDown = firstTouch.clientY;
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex - 1].style.display = "block";
+  dots[slideIndex - 1].className += " active";
+  setTimeout(showSlides, 3000);
 }
 
-function handleTouchEnd(evt) {
-  if (!xDown || !yDown) {
-    return;
-  }
-
-  const xUp = evt.changedTouches[0].clientX;
-  const yUp = evt.changedTouches[0].clientY;
-
-  const xDiff = xDown - xUp;
-  const yDiff = yDown - yUp;
-
-  if (Math.abs(xDiff) > Math.abs(yDiff)) {
-    if (xDiff > 0) {
-      currentImage++;
-      if (currentImage >= images.length) {
-        currentImage = 0;
-      }
-      updateCarousel();
-    } else {
-      currentImage--;
-      if (currentImage < 0) {
-        currentImage = images.length - 1;
-      }
-      updateCarousel();
-    }
-  }
-  xDown = null;
-  yDown = null;
+function plusSlides(n) {
+  showSlides(slideIndex += n);
 }
 
-function updateCarousel() {
-  for (let i = 0; i < images.length; i++) {
-    if (i === activeImage) {
-      images[i].style.display = 'block'; // display the active image
-    } else {
-      images[i].style.display = 'none'; // hide all other images
-    }
-  }
+function currentSlide(n) {
+  showSlides(slideIndex = n);
 }
-
-
-updateCarousel();
 </script>
+
 						<!--<ul class="actions">
 							<li><a href="mercado_libre/meli.html" class="button">Learn More</a></li>
 						</ul>-->						
