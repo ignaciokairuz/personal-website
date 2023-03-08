@@ -191,18 +191,28 @@ function handleTouchEnd(evt) {
   yDown = null;
 }
 
-function updateCarousel() {
-  const images = document.querySelectorAll('.carousel-img');
-  const prevImageIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-  const nextImageIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+function updateCarousel(direction) {
+  var imageWrapper = document.querySelector(".image-wrapper");
+  var images = imageWrapper.children;
+  var currentIndex = imageWrapper.dataset.currentSlide;
+  var nextIndex;
+  
+  if (direction === "next") {
+    nextIndex = (parseInt(currentIndex) + 1) % images.length;
+  } else {
+    nextIndex = (parseInt(currentIndex) - 1 + images.length) % images.length;
+  }
 
-  images.forEach((img, index) => {
-    img.style.display = 'none';
-    if (index === currentIndex || index === prevImageIndex || index === nextImageIndex) {
-      img.style.display = 'block';
-    }
-  });
+  // Set current image to display:none
+  images[currentIndex].style.display = "none";
+
+  // Set next image to display:block
+  images[nextIndex].style.display = "block";
+
+  // Update data attribute
+  imageWrapper.dataset.currentSlide = nextIndex;
 }
+
 
 
 
