@@ -195,8 +195,10 @@ function updateCarousel() {
   const slides = document.querySelector('.slides');
   const slideWidth = document.querySelector('.slide').clientWidth;
   const offset = currentImage * slideWidth;
+  slides.style.transition = 'none'; // remove transition
   slides.style.transform = `translateX(-${offset}px)`;
 }
+
 
 
 
