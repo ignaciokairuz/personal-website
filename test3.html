@@ -127,74 +127,47 @@ button {
 <script>
 const carousel = document.querySelector(".carousel");
 const slides = carousel.querySelector(".slides");
-const slide = carousel.querySelectorAll(".slide");
-
+const prevButton = carousel.querySelector("#prev");
+const nextButton = carousel.querySelector("#next");
+const slideWidth = carousel.clientWidth;
 let currentSlide = 0;
-let isDragging = false;
-let startPos = 0;
-let currentTranslate = 0;
-let prevTranslate = 0;
 
-const touchStart = (e) => {
-  currentSlide = Math.round(currentTranslate / -slide[0].offsetWidth);
-  if (currentSlide === 0) {
-    currentSlide = slide.length - 1;
-  } else {
-    currentSlide--;
-  }
-  startPos = e.touches[0].clientX;
-  isDragging = true;
-};
-
-const touchMove = (e) => {
-  if (isDragging) {
-    const currentPosition = e.touches[0].clientX;
-    currentTranslate = prevTranslate + currentPosition - startPos;
-  }
-};
-
-const touchEnd = () => {
-  prevTranslate = currentTranslate;
-  const threshold = slide[0].offsetWidth / 4;
-  if (currentTranslate > 0) {
-    currentSlide--;
-  } else if (currentTranslate < -slide[0].offsetWidth) {
-    currentSlide++;
-  } else if (Math.abs(currentTranslate - prevTranslate) > threshold) {
-    currentSlide += currentTranslate < prevTranslate ? 1 : -1;
-  }
-  currentSlide = (currentSlide + slide.length) % slide.length;
-  updateSlidePosition();
-  isDragging = false;
-};
-
-const updateSlidePosition = () => {
-  slides.style.transform = `translateX(-${currentSlide * slide[0].offsetWidth}px)`;
-};
-
-updateSlidePosition();
-
-slides.addEventListener("touchstart", touchStart);
-slides.addEventListener("touchmove", touchMove);
-slides.addEventListener("touchend", touchEnd);
-
-document.querySelector("#prev").addEventListener("click", () => {
-  currentSlide--;
+// Move to the previous slide
+prevButton.addEventListener("click", () => {
+  currentSlide = (currentSlide - 1) % slides.children.length;
   if (currentSlide < 0) {
-    currentSlide = slide.length - 1;
+    currentSlide = slides.children.length - 1;
   }
-  updateSlidePosition();
+  slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
 });
 
-document.querySelector("#next").addEventListener("click", () => {
-  currentSlide++;
-  if (currentSlide > slide.length - 1) {
-    currentSlide = 0;
-  }
-  updateSlidePosition();
+// Move to the next slide
+nextButton.addEventListener("click", () => {
+  currentSlide = (currentSlide + 1) % slides.children.length;
+  slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
 });
 
-window.addEventListener("resize", updateSlidePosition);
+// Swipe functionality for mobile devices
+let touchStartX = 0;
+let touchEndX = 0;
+
+carousel.addEventListener("touchstart", (event) => {
+  touchStartX = event.touches[0].clientX;
+});
+
+carousel.addEventListener("touchend", (event) => {
+  touchEndX = event.changedTouches[0].clientX;
+  if (touchStartX - touchEndX > 50) {
+    currentSlide = (currentSlide + 1) % slides.children.length;
+    slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  } else if (touchEndX - touchStartX > 50) {
+    currentSlide = (currentSlide - 1) % slides.children.length;
+    if (currentSlide < 0) {
+      currentSlide = slides.children.length - 1;
+    }
+    slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  }
+});
 </script>
 						<!--<ul class="actions">
 							<li><a href="mercado_libre/meli.html" class="button">Learn More</a></li>
