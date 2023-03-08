@@ -193,7 +193,7 @@ function handleTouchEnd(evt) {
 
 function updateCarousel() {
   for (let i = 0; i < images.length; i++) {
-    if (i === activeImage) {
+    if (i === currentImage) {
       images[i].style.display = 'block'; // display the active image
     } else {
       images[i].style.display = 'none'; // hide all other images
