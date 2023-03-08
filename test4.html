@@ -46,9 +46,9 @@
 
 <div class="carousel">
   <div class="slides">
-    <div class="slide"><img src="" data-src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="Image 1"></div>
-    <div class="slide"><img src="" data-src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="Image 2"></div>
-    <div class="slide"><img src="" data-src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 3"></div>
+    <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186550/ppal-mobile-2x.jpg" alt="Image 1"></div>
+    <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186551/ppal-mobile-2x.jpg" alt="Image 2"></div>
+    <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 3"></div>
   </div> 
 <button id="prev">
     <!-- SVG code for left arrow -->
@@ -97,12 +97,10 @@
 }
 
 .slides {
-  display: flex;
-  width: 300%; /* set to the total width of all the images */
-  overflow-x: hidden;
-  transition: transform .4s ease-in-out;
+   display:flex;
+   overflow-x:hidden;
+   transition:transform .4s ease-in-out;
 }
-
 
 .slide {
    flex:none;
@@ -128,17 +126,17 @@ button {
 }
 </style>						
 <script>
-const carousel = document.querySelector('.carousel');
-const images = carousel.querySelectorAll('img');
+const carousel = document.getElementById("carousel");
+const images = carousel.getElementsByTagName("img");
 let currentImage = 0;
 
-carousel.addEventListener('touchstart', handleTouchStart);
-carousel.addEventListener('touchend', handleTouchEnd);
+carousel.addEventListener("touchstart", handleTouchStart);
+carousel.addEventListener("touchend", handleTouchEnd);
 
-const prevButton = document.querySelector('#prev');
-const nextButton = document.querySelector('#next');
+const leftArrow = document.querySelector('.arrow-left');
+const rightArrow = document.querySelector('.arrow-right');
 
-prevButton.addEventListener('click', function() {
+leftArrow.addEventListener('click', function() {
   currentImage--;
   if (currentImage < 0) {
     currentImage = images.length - 1;
@@ -146,7 +144,7 @@ prevButton.addEventListener('click', function() {
   updateCarousel();
 });
 
-nextButton.addEventListener('click', function() {
+rightArrow.addEventListener('click', function() {
   currentImage++;
   if (currentImage >= images.length) {
     currentImage = 0;
@@ -157,19 +155,18 @@ nextButton.addEventListener('click', function() {
 let xDown = null;
 let yDown = null;
 
-function handleTouchStart(evt) {
-  const firstTouch = evt.touches[0];
-  xDown = firstTouch.clientX;
-  yDown = firstTouch.clientY;
+function handleTouchStart(event) {
+  xDown = event.touches[0].clientX;
+  yDown = event.touches[0].clientY;
 }
 
-function handleTouchEnd(evt) {
+function handleTouchEnd(event) {
   if (!xDown || !yDown) {
     return;
   }
 
-  const xUp = evt.changedTouches[0].clientX;
-  const yUp = evt.changedTouches[0].clientY;
+  const xUp = event.changedTouches[0].clientX;
+  const yUp = event.changedTouches[0].clientY;
 
   const xDiff = xDown - xUp;
   const yDiff = yDown - yUp;
@@ -194,21 +191,12 @@ function handleTouchEnd(evt) {
 }
 
 function updateCarousel() {
-  const slides = document.querySelector('.slides');
-  const slideWidth = document.querySelector('.slide').clientWidth;
-  const offset = currentImage * slideWidth;
-  slides.style.transform = `translateX(-${offset}px)`;
-
-  // Update the current image and image source
-  images[currentImage].setAttribute('src', images[currentImage].getAttribute('data-src'));
   for (let i = 0; i < images.length; i++) {
-    if (i !== currentImage) {
-      images[i].setAttribute('src', '');
-    }
+    images[i].style.display = "none";
   }
+  images[currentImage].style.display = "block";
 }
-
-updateCarousel();
+updateCarousel()
 </script>
 						<!--<ul class="actions">
 							<li><a href="mercado_libre/meli.html" class="button">Learn More</a></li>
