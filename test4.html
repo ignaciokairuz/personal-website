@@ -104,9 +104,13 @@
 }
 
 .slide {
-   flex:none;
-   width:100%;
+  flex: none;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 img {
    max-width:100%;
@@ -192,9 +196,16 @@ function handleTouchEnd(event) {
 }
 
 function updateCarousel() {
-  const slideWidth = images[0].clientWidth;
-  carousel.querySelector(".slides").style.transform = `translateX(-${currentImage * slideWidth}px)`;
+  const slides = carousel.querySelectorAll(".slide");
+  for (let i = 0; i < images.length; i++) {
+    if (i === currentImage) {
+      slides[i].style.opacity = 1;
+    } else {
+      slides[i].style.opacity = 0;
+    }
+  }
 }
+
 
 updateCarousel()
 </script>
