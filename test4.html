@@ -128,7 +128,7 @@ button {
 </style>						
 <script>
 const carousel = document.querySelector(".carousel");
-const images = carousel.getElementsByTagName("img");
+const images = carousel.querySelectorAll("img");
 let currentImage = 0;
 
 carousel.addEventListener("touchstart", handleTouchStart);
