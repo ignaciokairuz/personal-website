@@ -125,49 +125,77 @@ button {
 }
 </style>						
 <script>
-const carousel = document.querySelector(".carousel");
-const slides = carousel.querySelector(".slides");
-const prevButton = carousel.querySelector("#prev");
-const nextButton = carousel.querySelector("#next");
-const slideWidth = carousel.clientWidth;
-let currentSlide = 0;
+const carousel = document.getElementById("carousel");
+const images = carousel.getElementsByTagName("img");
+let currentImage = 0;
 
-// Move to the previous slide
-prevButton.addEventListener("click", () => {
-  currentSlide = (currentSlide - 1) % slides.children.length;
-  if (currentSlide < 0) {
-    currentSlide = slides.children.length - 1;
+carousel.addEventListener("touchstart", handleTouchStart);
+carousel.addEventListener("touchend", handleTouchEnd);
+
+const leftArrow = document.querySelector('.arrow-left');
+const rightArrow = document.querySelector('.arrow-right');
+
+leftArrow.addEventListener('click', function() {
+  currentImage--;
+  if (currentImage < 0) {
+    currentImage = images.length - 1;
   }
-  slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+  updateCarousel();
 });
 
-// Move to the next slide
-nextButton.addEventListener("click", () => {
-  currentSlide = (currentSlide + 1) % slides.children.length;
-  slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+rightArrow.addEventListener('click', function() {
+  currentImage++;
+  if (currentImage >= images.length) {
+    currentImage = 0;
+  }
+  updateCarousel();
 });
 
-// Swipe functionality for mobile devices
-let touchStartX = 0;
-let touchEndX = 0;
+let xDown = null;
+let yDown = null;
 
-carousel.addEventListener("touchstart", (event) => {
-  touchStartX = event.touches[0].clientX;
-});
+function handleTouchStart(event) {
+  xDown = event.touches[0].clientX;
+  yDown = event.touches[0].clientY;
+}
 
-carousel.addEventListener("touchend", (event) => {
-  touchEndX = event.changedTouches[0].clientX;
-  if (touchStartX - touchEndX > 50) {
-    currentSlide = (currentSlide + 1) % slides.children.length;
-    slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-  } else if (touchEndX - touchStartX > 50) {
-    currentSlide = (currentSlide - 1) % slides.children.length;
-    if (currentSlide < 0) {
-      currentSlide = slides.children.length - 1;
+function handleTouchEnd(event) {
+  if (!xDown || !yDown) {
+    return;
+  }
+
+  const xUp = event.changedTouches[0].clientX;
+  const yUp = event.changedTouches[0].clientY;
+
+  const xDiff = xDown - xUp;
+  const yDiff = yDown - yUp;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      currentImage++;
+      if (currentImage >= images.length) {
+        currentImage = 0;
+      }
+      updateCarousel();
+    } else {
+      currentImage--;
+      if (currentImage < 0) {
+        currentImage = images.length - 1;
+      }
+      updateCarousel();
     }
-    slides.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
   }
-});
+  xDown = null;
+  yDown = null;
+}
+
+function updateCarousel() {
+  for (let i = 0; i < images.length; i++) {
+    images[i].style.display = "none";
+  }
+  images[currentImage].style.display = "block";
+}
+updateCarousel()
 </script>
 						<!--<ul class="actions">
 							<li><a href="mercado_libre/meli.html" class="button">Learn More</a></li>
