@@ -44,53 +44,30 @@
   
 <style>
 body {
-  background-color: black;
+  background-color: green;
 }
 
-.carousel {
-  max-width: 800px; /* set your desired maximum width */
-  width: 100%;
-  margin: auto;
-  position: relative;
-}
+ .carousel { width:80%; margin:auto; position:relative; }
 
-.slides {
-  display:flex;
-  overflow-x:hidden;
-  transition:transform .4s ease-in-out;
-}
+.slides { display:flex; overflow-x:hidden; transition:transform .4s ease-in-out; }
 
-.slide {
-  flex: none;
-  width: 100%;
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
+.slide { flex: none; width: 100%; display: none; justify-content: center; align-items: center; }
 
-#laimagen {
-  max-width:100%;
-  border: 5px solid gainsboro; /* add this line */
-}
+#laimagen { max-width:100%; border: 5px solid gainsboro; /* add this line */ }
 
-button {
-  position:absolute; /* change from absolute to fixed */
-  top:50%;
-  transform:translateY(-50%);
-  background-color: grey; /* add this line */
-  border: 2px solid black; /* add this line */
-  border-radius: 10px; /* add this line */	
-}
+button { position:absolute; /* change from absolute to fixed / top:50%; transform:translateY(-50%); background-color: grey; / add this line / border: 2px solid black; / add this line / border-radius: 10px; / add this line */ }
 
-#prev {
-  left:0;
-  margin-left: -4em; /* add this line */
-}
+#prev { left:0; }
 
-#next {
-  right:0;
-  margin-right: -4em; /* add this line */
-}
+#next { right:0; }
+
+/* Add media queries for different screen sizes */
+
+@media (max-width:600px) { /* for small screens / .carousel { width:100%; / make the carousel take up the whole screen width / } button { margin-left:-2em; / reduce the margin for the buttons */ margin-right:-2em; } }
+
+@media (min-width:601px) and (max-width:1200px) { /* for medium screens / .carousel { width:90%; / make the carousel take up most of the screen width / } button { margin-left:-3em; / adjust the margin for the buttons */ margin-right:-3em; } }
+
+@media (min-width:1201px) { /* for large screens / .carousel { width:80%; / make the carousel take up less of the screen width / } button { margin-left:-4em; / increase the margin for the buttons */ margin-right:-4em; } }
 
 </style>						
 <script>
