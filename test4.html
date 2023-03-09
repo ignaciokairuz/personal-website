@@ -50,27 +50,26 @@
     <div class="slide"><img src="images/slide2.jpg" alt="Image 2"></div>
     <div class="slide"><img src="images/slide3.jpg" alt="Image 3"></div>
   </div>
-<button id="prev" class="arrow-left">
+<button id="prev" class="arrow-left" style="width: 40%; max-width: 50px;">
   <!-- SVG code for left arrow -->
-  <svg height="50" width="50" viewBox="0 0 100 100">
+  <svg height="100%" width="100%" viewBox="0 0 100 100">
     <path d="M70,20 L30,50 L70,80"
-      stroke="#fff"
+      stroke="white"
       stroke-width="10"
       fill-opacity="0"
     />
   </svg>  
 </button>
-<button id="next" class="arrow-right">
+<button id="next" class="arrow-right" style="width: 40%; max-width: 50px;">
   <!-- SVG code for right arrow -->
-  <svg height="50" width="50" viewBox="0 0 100 100">
+  <svg height="100%" width="100%" viewBox="0 0 100 100">
     <path d="M30,20 L70,50 L30,80"
-      stroke="#fff"
+      stroke="white"
       stroke-width="10"
       fill-opacity="0"
     />
   </svg>  
 </button>
-
 </div>
   
 <style>
@@ -102,6 +101,9 @@ button {
   position:absolute; /* change from absolute to fixed */
   top:50%;
   transform:translateY(-50%);
+  background-color: grey; /* add this line */
+  border: 2px solid black; /* add this line */
+  border-radius: 10px; /* add this line */	
 }
 
 #prev {
@@ -111,7 +113,7 @@ button {
 
 #next {
   right:0;
-  margin-right: -5em; /* add this line */
+  margin-right: -4.9em; /* add this line */
 }
 
 </style>						
