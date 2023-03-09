@@ -44,36 +44,30 @@
   
 <style>
 body {
-  background-color: powerderblue;
+  background-color: powderblue;
 }
-
- .carousel { width:80%; margin:auto; position:relative; }
+.carousel { width:80vw; /* use viewport width unit */ margin:auto; position:relative; }
 
 .slides { display:flex; overflow-x:hidden; transition:transform .4s ease-in-out; }
 
-.slide { flex: none; width: 100%; display: none; justify-content: center; align-items: center; }
+.slide { flex: none; width: 100%; display: none;
+
+/* Add these lines to center the image */
+
+display: flex; justify-content: center; align-items: center; }
 
 #laimagen { max-width:100%; border: 5px solid gainsboro; /* add this line */ }
 
-button { position:absolute; 
+button { position:absolute;
 	top:50%; transform:translateY(-50%); 
 	background-color: grey;
-	border: 2px solid black; 
-	border-radius: 10px; 
+	border: 2px solid black;
+	border-radius: 10px;
 	}
 
-#prev { left:0; }
+#prev { left:-5vw; /* use negative viewport width unit */ }
 
-#next { right:0; }
-
-/* Add media queries for different screen sizes */
-
-@media (max-width:600px) { /* for small screens / .carousel { width:100%; / make the carousel take up the whole screen width / } button { margin-left:-2em; / reduce the margin for the buttons */ margin-right:-2em; } }
-
-@media (min-width:601px) and (max-width:1200px) { /* for medium screens / .carousel { width:90%; / make the carousel take up most of the screen width / } button { margin-left:-3em; / adjust the margin for the buttons */ margin-right:-3em; } }
-
-@media (min-width:1201px) { /* for large screens / .carousel { width:80%; / make the carousel take up less of the screen width / } button { margin-left:-4em; / increase the margin for the buttons */ margin-right:-4em; } }
-
+#next { right:-5vw; /* use negative viewport width unit */ }
 </style>						
 <script>
 const carousel = document.querySelector(".carousel");
