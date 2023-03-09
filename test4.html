@@ -70,7 +70,7 @@
     />
   </svg>  
 </button>
-<a href="https://docs.google.com/presentation/d/e/2PACX-1vQqPtyMU_TYovPOxd2nawF8l6QSrtrVXehMw_l9PXHb7I1cf3zEi0rb92fRdQJyAg/pub?start=false&loop=true&delayms=15000" ><button id=“expand” class=“expand-button”><i class="icon solid fa-expand-arrows-alt"></i></button></a>
+<button id=“expand” class=“expand-button” onclick="window.location.href='https://www.google.com'"><i class="icon solid fa-expand-arrows-alt"></i></button>
 </div>
   
 <style>
@@ -118,18 +118,20 @@ button {
   margin-right: -4em; /* add this line */
 }
 
-.expand-button { bottom:-5%;
-	right:-5%;
-	background-color:grey; 
-	color:white; 
-	font-size:1.2em; }
+.expand-button {
+  position: absolute; /* change from fixed to absolute */
+  bottom: 0; /* change from -5% to 0 */
+  right: 0; /* change from -5% to 0 */
+  background-color: grey;
+  color: white;
+  font-size: 1.2em;
+}
 
-/* Add these lines for media queries */
-
-@media (max-width:600px) { 
-	.expand-button { bottom:-10%;
-		right:-10%;
-} }	
+@media (max-width:600px) {
+	.expand-button {
+    bottom: -10%;
+    right: -10%;
+} }
 </style>						
 <script>
 const carousel = document.querySelector(".carousel");
