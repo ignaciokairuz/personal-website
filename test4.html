@@ -75,15 +75,15 @@
   
 <style>
 .carousel {
-  width: 80%;
-  margin: auto;
-  position: relative;
+  width:80%;
+  margin:auto;
+  position:relative;
 }
 
 .slides {
-  display: flex;
-  overflow-x: hidden;
-  transition: transform .4s ease-in-out;
+  display:flex;
+  overflow-x:hidden;
+  transition:transform .4s ease-in-out;
 }
 
 .slide {
@@ -95,34 +95,21 @@
 }
 
 img {
-  max-width: 100%;
+  max-width:100%;
 }
 
 button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2em;
+  position:fixed; /* change from absolute to fixed */
+  top:50%;
+  transform:translateY(-50%);
 }
 
 #prev {
-  left: 0;
+  left:0;
 }
 
 #next {
-  right: 0;
-}
-
-@media screen and (max-width: 768px) {
-  button {
-    font-size: 1.5em;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  button {
-    font-size: 1em;
-  }
+  right:0;
 }
 
 </style>						
