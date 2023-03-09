@@ -50,44 +50,27 @@
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186552/ppal-mobile-2x.jpg" alt="Image 2"></div>
     <div class="slide"><img src="https://api.carlosgutierrez.com.uy/fotos/fotos/186553/ppal-mobile-2x.jpg" alt="Image 3"></div>
   </div>
-  <button id="prev" class="arrow-left">
-    <!-- SVG code for left arrow -->
-    <svg height="50" width="50" viewBox="-10 -10 120 120">
-      <defs>
-        <marker id="arrowhead" markerWidth="10" markerHeight="7"
-        refX="-5" refY="-3.5" orient="-90">
-          <polygon points="-5 -7, -5 7, -15 0" fill="#fff"/>
-        </marker>
-      </defs>
-      <path d="M 4 0 l -4 -5 L 0 5"
-        stroke="#fff"
-        stroke-width="10"
-        fill-opacity= "0"
-        marker-start= "url(#arrowhead)">
-        <!-- Add animate element to change stroke-dashoffset -->
-        <animate attributeName= "stroke-dashoffset" from= "0" to= "-380" dur= "1s" repeatCount= "indefinite"/>
-      </path>
-    </svg>  
-  </button>
-  <button id="next" class="arrow-right">
-    <!-- SVG code for right arrow -->
-    <svg height= "50" width= "50" viewBox= "-10 -10 120 120">
-      <defs>
-        <marker id= "arrowhead" markerWidth= "10" markerHeight= "7"
-        refX= "-5" refY= "-3.5" orient="+90">
-          <polygon points="-15 -7, -15 7, -25 0" fill="#fff"/>
-        </marker>
-      </defs>
-      <path d="M 4 0 l -4 -5 L 0 5"
-        stroke="#fff"
-        stroke-width="10"
-        fill-opacity = "0"
-        marker-end = "url(#arrowhead)">
-         <!-- Add animate element to change stroke-dashoffset -->
-         <animate attributeName = "stroke-dashoffset" from = "-380" to = "0" dur = "1s" repeatCount = "indefinite"/>
-       </path>
-     </svg>  
-   </button>  
+<button id="prev" class="arrow-left">
+  <!-- SVG code for left arrow -->
+  <svg height="50" width="50" viewBox="0 0 100 100">
+    <path d="M70,20 L30,50 L70,80"
+      stroke="#fff"
+      stroke-width="10"
+      fill-opacity="0"
+    />
+  </svg>  
+</button>
+<button id="next" class="arrow-right">
+  <!-- SVG code for right arrow -->
+  <svg height="50" width="50" viewBox="0 0 100 100">
+    <path d="M30,20 L70,50 L30,80"
+      stroke="#fff"
+      stroke-width="10"
+      fill-opacity="0"
+    />
+  </svg>  
+</button>
+
 </div>
   
 <style>
