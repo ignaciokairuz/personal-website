@@ -75,44 +75,56 @@
   
 <style>
 .carousel {
-   width:80%;
-   margin:auto;
-   position:relative;
+  width: 80%;
+  margin: auto;
+  position: relative;
 }
 
 .slides {
-   display:flex;
-   overflow-x:hidden;
-   transition:transform .4s ease-in-out;
+  display: flex;
+  overflow-x: hidden;
+  transition: transform .4s ease-in-out;
 }
 
 .slide {
   flex: none;
   width: 100%;
-  display: none; /* change this line */
+  display: none;
   justify-content: center;
   align-items: center;
 }
 
-
 img {
-   max-width:100%;
+  max-width: 100%;
 }
 
 button {
-   position:absolute;
-   top:50%;
-   transform:translateY(-50%);
-   font-size:2em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2em;
 }
 
 #prev {
-   left:0;
+  left: 0;
 }
 
 #next {
-   right:0;
+  right: 0;
 }
+
+@media screen and (max-width: 768px) {
+  button {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  button {
+    font-size: 1em;
+  }
+}
+
 </style>						
 <script>
 const carousel = document.querySelector(".carousel");
